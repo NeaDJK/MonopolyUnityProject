@@ -1,0 +1,275 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\UnityProjects\\Monopoly\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|c:\\unityprojects\\monopoly\\assets\\project\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|c:\\unityprojects\\monopoly\\assets\\project\\scripts\\core\\monopolygamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\core\\monopolygamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|c:\\unityprojects\\monopoly\\assets\\project\\scripts\\ui\\playerstatusui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\ui\\playerstatusui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\poba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\poba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\inventory\\inventorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\inventory\\inventorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\ui\\cellinfoui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\ui\\cellinfoui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cells\\jailcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cells\\jailcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cells\\parkingcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cells\\parkingcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cells\\taxcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cells\\taxcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cells\\startcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cells\\startcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cells\\monopolycell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cells\\monopolycell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cells\\specialcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cells\\specialcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cells\\propertycell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cells\\propertycell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|C:\\UnityProjects\\Monopoly\\assets\\project\\scripts\\cells\\transportcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB9435B-C119-B710-47EF-0CBD9818520D}|Assembly-CSharp.csproj|solutionrelative:assets\\project\\scripts\\cells\\transportcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerStatusUI.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\UI\\PlayerStatusUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\UI\\PlayerStatusUI.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\UI\\PlayerStatusUI.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\UI\\PlayerStatusUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:29:26.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Player.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:09:49.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MonopolyGameManager.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Core\\MonopolyGameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Core\\MonopolyGameManager.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Core\\MonopolyGameManager.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Core\\MonopolyGameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T10:56:57.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Poba.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Poba.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Poba.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Poba.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Poba.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T21:16:15.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Cell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T20:14:32.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InventoryManager.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Inventory\\InventoryManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Inventory\\InventoryManager.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Inventory\\InventoryManager.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Inventory\\InventoryManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T17:24:30.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CellInfoUI.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\UI\\CellInfoUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\UI\\CellInfoUI.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\UI\\CellInfoUI.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\UI\\CellInfoUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T11:13:52.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "JailCell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\JailCell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cells\\JailCell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\JailCell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cells\\JailCell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T07:22:56.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ParkingCell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\ParkingCell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cells\\ParkingCell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\ParkingCell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cells\\ParkingCell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T09:11:53.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TaxCell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\TaxCell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cells\\TaxCell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\TaxCell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cells\\TaxCell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:22:25.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "StartCell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\StartCell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cells\\StartCell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\StartCell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cells\\StartCell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:17:31.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SpecialCell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\SpecialCell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cells\\SpecialCell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\SpecialCell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cells\\SpecialCell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:01:32.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PropertyCell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\PropertyCell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cells\\PropertyCell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\PropertyCell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cells\\PropertyCell.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAzwFAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T10:37:28.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TransportCell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\TransportCell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cells\\TransportCell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\TransportCell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cells\\TransportCell.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAvwDIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T07:06:30.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MonopolyCell.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\MonopolyCell.cs",
+              "RelativeDocumentMoniker": "Assets\\Project\\Scripts\\Cells\\MonopolyCell.cs",
+              "ToolTip": "C:\\UnityProjects\\Monopoly\\Assets\\Project\\Scripts\\Cells\\MonopolyCell.cs",
+              "RelativeToolTip": "Assets\\Project\\Scripts\\Cells\\MonopolyCell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T10:51:02.348Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

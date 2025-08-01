@@ -9,7 +9,7 @@ public class PropertyCell : MonopolyCell
     public int[] rentPrices;
     public int cellIndex;
 
-    [HideInInspector] public MonopolyGameManager.Player owner;
+    [HideInInspector] public Player owner;
     [HideInInspector] public int housesBuilt;
     [HideInInspector] public bool isMortgaged;
     [HideInInspector] public bool isActiveForPurchase;
@@ -19,7 +19,7 @@ public class PropertyCell : MonopolyCell
         owner = null;
     }
 
-    public override void OnPlayerLand(MonopolyGameManager.Player player)
+    public override void OnPlayerLand(Player player)
     {
         Debug.Log($"[{cellName}] Статус: {(owner == null ? "Свободна" : "Принадлежит " + owner.playerName)}");
 
@@ -40,14 +40,14 @@ public class PropertyCell : MonopolyCell
         }
     }
 
-    private void HandleUnownedCell(MonopolyGameManager.Player player)
+    private void HandleUnownedCell(Player player)
     {
         isActiveForPurchase = true;
         ShowPurchaseInfo(player);
         MonopolyGameManager.Instance.LogEvent($"Клетка {cellName} доступна для покупки");
     }
 
-    private void HandleRentPayment(MonopolyGameManager.Player player)
+    private void HandleRentPayment(Player player)
     {
         int rent = CalculateRent();
         MonopolyGameManager.Instance.LogEvent($"{player.playerName} платит аренду {owner.playerName}: ${rent}");
@@ -55,7 +55,7 @@ public class PropertyCell : MonopolyCell
         owner.AddMoney(rent);
     }
 
-    private void ShowPurchaseInfo(MonopolyGameManager.Player player)
+    private void ShowPurchaseInfo(Player player)
     {
         string info = $"[{cellName}]\nЦена: ${purchasePrice}\nАренда: ${rentPrices[0]}";
         if (rentPrices.Length > 1) info += $" (до ${rentPrices[^1]})";
@@ -63,7 +63,7 @@ public class PropertyCell : MonopolyCell
         MonopolyGameManager.Instance.LogEvent(info);
     }
 
-    public void TryPurchase(MonopolyGameManager.Player buyer)
+    public void TryPurchase(Player buyer)
     {
         if (isActiveForPurchase && owner == null)
         {
@@ -78,7 +78,7 @@ public class PropertyCell : MonopolyCell
         }
     }
 
-    private void CompletePurchase(MonopolyGameManager.Player buyer)
+    private void CompletePurchase(Player buyer)
     {
         buyer.PayMoney(purchasePrice);
         owner = buyer;

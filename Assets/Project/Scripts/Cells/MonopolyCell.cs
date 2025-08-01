@@ -10,5 +10,5 @@ public abstract class MonopolyCell : MonoBehaviour
     public string cellName;
     public int positionOnBoard;
 
-    public abstract void OnPlayerLand(MonopolyGameManager.Player player);
+    public abstract void OnPlayerLand(Player player);
 }

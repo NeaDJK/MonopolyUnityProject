@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParkingCell : MonopolyCell
 {
-    public override void OnPlayerLand(MonopolyGameManager.Player player)
+    public override void OnPlayerLand(Player player)
     {
         MonopolyGameManager.Instance.LogEvent($"{player.playerName} остановился на парковке.");
     }

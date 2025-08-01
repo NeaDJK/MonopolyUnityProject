@@ -6,7 +6,7 @@ public class StartCell : MonopolyCell
 {
     public int startMoney = 200;
 
-    public override void OnPlayerLand(MonopolyGameManager.Player player)
+    public override void OnPlayerLand(Player player)
     {
         player.AddMoney(startMoney);
         MonopolyGameManager.Instance.LogEvent($"{player.playerName} проходит старт и получает ${startMoney}.");

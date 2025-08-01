@@ -1,4 +1,0 @@
-repository "Monopoly 2025-04-11_11-06-43/Monopoly@10171232011841@cloud"
-  path "/"
-    br "/main"
-    co "/main"

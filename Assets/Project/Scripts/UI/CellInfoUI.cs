@@ -20,7 +20,7 @@ public class CellInfoUI : MonoBehaviour
         MonopolyGameManager.OnPlayerMoved -= UpdateCellInfo;
     }
 
-    private void UpdateCellInfo(MonopolyGameManager.Player player)
+    private void UpdateCellInfo(Player player)
     {
         MonopolyCell currentCell = MonopolyGameManager.Instance.GetCurrentCell(player);
 

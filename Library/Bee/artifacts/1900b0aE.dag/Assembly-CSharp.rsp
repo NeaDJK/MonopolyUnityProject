@@ -360,6 +360,7 @@
 "Assets/Project/Scripts/Cells/TransportCell.cs"
 "Assets/Project/Scripts/Core/MonopolyGameManager.cs"
 "Assets/Project/Scripts/Inventory/InventoryManager.cs"
+"Assets/Project/Scripts/Player.cs"
 "Assets/Project/Scripts/Poba.cs"
 "Assets/Project/Scripts/UI/CellInfoUI.cs"
 "Assets/Project/Scripts/UI/EventLoggerUI.cs"

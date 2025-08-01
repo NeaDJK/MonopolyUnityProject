@@ -6,7 +6,7 @@ public class TransportCell : MonopolyCell
 {
     public int purchasePrice = 200;
     public int[] rentPrices = { 50, 100, 200, 400 }; 
-    public MonopolyGameManager.Player owner;
+    public Player owner;
     public bool isMortgaged;
 
     void Start()
@@ -14,7 +14,7 @@ public class TransportCell : MonopolyCell
         owner = null;
     }
 
-    public override void OnPlayerLand(MonopolyGameManager.Player player)
+    public override void OnPlayerLand(Player player)
     {
         if (owner == null)
         {
@@ -26,7 +26,7 @@ public class TransportCell : MonopolyCell
         }
     }
 
-    private void ShowPurchaseInfo(MonopolyGameManager.Player player)
+    private void ShowPurchaseInfo(Player player)
     {
         if (owner == null)
         {
@@ -38,7 +38,7 @@ public class TransportCell : MonopolyCell
         }
     }
 
-    private void ChargeRent(MonopolyGameManager.Player player)
+    private void ChargeRent(Player player)
     {
         int transportCount = owner.ownedTransports.Count;
         int rent = rentPrices[Mathf.Clamp(transportCount - 1, 0, rentPrices.Length - 1)];
@@ -48,7 +48,7 @@ public class TransportCell : MonopolyCell
         owner.AddMoney(rent);
     }
 
-    public void TryPurchase(MonopolyGameManager.Player buyer)
+    public void TryPurchase(Player buyer)
     {
         if (buyer.money >= purchasePrice)
         {

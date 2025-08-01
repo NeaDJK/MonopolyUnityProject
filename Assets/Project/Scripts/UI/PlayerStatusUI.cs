@@ -24,14 +24,14 @@ public class PlayerStatusUI : MonoBehaviour
 
     private void UpdateStatus()
     {
-        MonopolyGameManager.Player player = MonopolyGameManager.Instance.GetCurrentPlayer();
+        Player player = MonopolyGameManager.Instance.GetCurrentPlayer();
 
         playerNameText.text = $"Игрок: {player.playerName}";
         playerBalanceText.text = $"Баланс: ${player.money}";
         UpdateOwnedAssets(player);
     }
 
-    private void UpdateOwnedAssets(MonopolyGameManager.Player player)
+    private void UpdateOwnedAssets(Player player)
     {
         ownedPropertiesText.text = "Недвижимость:\n" +
             (player.ownedProperties.Count > 0

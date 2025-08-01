@@ -74,6 +74,7 @@
     <Compile Include="Assets\Project\Scripts\UI\HelpMenuManager.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\JailCell.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\TransportCell.cs" />
+    <Compile Include="Assets\Project\Scripts\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

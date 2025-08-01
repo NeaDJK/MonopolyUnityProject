@@ -23,7 +23,7 @@ public class SpecialCell : MonopolyCell
         "Оплатите больничные счета $100"
     };
 
-    public override void OnPlayerLand(MonopolyGameManager.Player player)
+    public override void OnPlayerLand(Player player)
     {
         string randomEvent = GetRandomEvent(cellCategory);
         HandleEvent(player, randomEvent);
@@ -35,7 +35,7 @@ public class SpecialCell : MonopolyCell
         return events[Random.Range(0, events.Count)];
     }
 
-    private void HandleEvent(MonopolyGameManager.Player player, string eventText)
+    private void HandleEvent(Player player, string eventText)
     {
         MonopolyGameManager.Instance.LogEvent($"{player.playerName} на клетке {cellName}: {eventText}");
 

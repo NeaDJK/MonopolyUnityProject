@@ -6,7 +6,7 @@ public class JailCell : MonopolyCell
     public int bailAmount = 50; 
     public int turnsToSkip = 3; 
 
-    public override void OnPlayerLand(MonopolyGameManager.Player player)
+    public override void OnPlayerLand(Player player)
     {
         if (player.isInJail)
         {
@@ -20,14 +20,14 @@ public class JailCell : MonopolyCell
         }
     }
 
-    private void SendPlayerToJail(MonopolyGameManager.Player player)
+    private void SendPlayerToJail(Player player)
     {
         player.isInJail = true;
         player.turnsInJail = turnsToSkip;
         player.currentPosition = positionOnBoard; 
     }
 
-    private void HandleJailedPlayer(MonopolyGameManager.Player player)
+    private void HandleJailedPlayer(Player player)
     {
         player.turnsInJail--;
 

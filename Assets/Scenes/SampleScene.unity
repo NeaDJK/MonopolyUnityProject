@@ -151,22 +151,7 @@ MonoBehaviour:
   purchasePrice: 260
   rentPrices: 160000006e0000004a01000020030000cf0300007e040000
   cellIndex: 14
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -1068,17 +1053,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136807742}
   m_CullTransparentMesh: 1
---- !u!114 &147170863 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4906209482998279895, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
-  m_PrefabInstance: {fileID: 2011529636}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &172519332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1815,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292172376}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46f79e160c386a4498811ae648080fdb, type: 3}
   m_Name: 
@@ -1892,66 +1866,10 @@ MonoBehaviour:
   cellSize: 1.5
   boardBaseHeight: 0
   players:
-  - piece: {fileID: 2145549412}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 1, b: 0, a: 1}
-    playerName: Lily
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 0
-    playerCam: {fileID: 147170863}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
-  - piece: {fileID: 1566517030}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 1
-    playerColor: {r: 0, g: 0, b: 1, a: 1}
-    playerName: Nik
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 0
-    playerCam: {fileID: 1901013220}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
-  - piece: {fileID: 1476009697}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 2
-    playerColor: {r: 1, g: 0, b: 0, a: 1}
-    playerName: Ivan
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 0
-    playerCam: {fileID: 1031169005}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
-  - piece: {fileID: 541207872}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 3
-    playerColor: {r: 1, g: 1, b: 1, a: 1}
-    playerName: Petr
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 0
-    playerCam: {fileID: 2022557807}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerBaseHeight: 0.4
   moveSpeed: 5
   jumpHeight: 0.3
@@ -2246,22 +2164,7 @@ MonoBehaviour:
   purchasePrice: 120
   rentPrices: 0800000028000000640000002c010000c201000058020000
   cellIndex: 4
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -3446,11 +3349,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502586274}
   m_CullTransparentMesh: 1
---- !u!1 &541207872 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 466848570732779717, guid: 9797bd000b9cdf841ab4ac9f3cb9183e, type: 3}
-  m_PrefabInstance: {fileID: 1178647644}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &552627435
 GameObject:
   m_ObjectHideFlags: 0
@@ -4599,22 +4497,7 @@ MonoBehaviour:
   purchasePrice: 300
   rentPrices: 1a0000008200000086010000840300004c040000fb040000
   cellIndex: 17
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -4734,22 +4617,7 @@ MonoBehaviour:
   purchasePrice: 200
   rentPrices: 1000000050000000dc0000005802000020030000e8030000
   cellIndex: 10
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -4787,22 +4655,7 @@ MonoBehaviour:
   purchasePrice: 220
   rentPrices: 120000005a000000fa000000bc0200006b0300001a040000
   cellIndex: 11
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -4834,22 +4687,7 @@ MonoBehaviour:
   positionOnBoard: 15
   purchasePrice: 200
   rentPrices: 3200000064000000c800000090010000
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   isMortgaged: 0
 --- !u!1 &908862966 stripped
 GameObject:
@@ -4880,22 +4718,7 @@ MonoBehaviour:
   purchasePrice: 220
   rentPrices: 120000005a000000fa000000bc0200006b0300001a040000
   cellIndex: 12
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -5581,36 +5404,10 @@ MonoBehaviour:
   purchasePrice: 180
   rentPrices: 0e00000046000000c800000026020000ee020000b6030000
   cellIndex: 8
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
---- !u!114 &1031169005 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8842895438175144085, guid: ec9d735971d3813409aa296a51557163, type: 3}
-  m_PrefabInstance: {fileID: 1423668938}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1054935661 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2368930933543060080, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
@@ -5635,22 +5432,7 @@ MonoBehaviour:
   purchasePrice: 300
   rentPrices: 1a0000008200000086010000840300004c040000fb040000
   cellIndex: 18
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -6192,22 +5974,7 @@ MonoBehaviour:
   purchasePrice: 140
   rentPrices: 0a0000003200000096000000c201000071020000ee020000
   cellIndex: 5
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -6240,22 +6007,7 @@ MonoBehaviour:
   purchasePrice: 140
   rentPrices: 0a0000003200000096000000c201000071020000ee020000
   cellIndex: 6
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -6508,22 +6260,7 @@ MonoBehaviour:
   positionOnBoard: 35
   purchasePrice: 200
   rentPrices: 3200000064000000c800000090010000
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   isMortgaged: 0
 --- !u!1 &1281768453
 GameObject:
@@ -6647,22 +6384,7 @@ MonoBehaviour:
   purchasePrice: 350
   rentPrices: 23000000af000000f40100004c04000014050000dc050000
   cellIndex: 20
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -6796,22 +6518,7 @@ MonoBehaviour:
   purchasePrice: 160
   rentPrices: 0c0000003c000000b4000000f4010000bc02000084030000
   cellIndex: 7
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -7446,11 +7153,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474635280}
   m_CullTransparentMesh: 1
---- !u!1 &1476009697 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7084220933333533961, guid: ec9d735971d3813409aa296a51557163, type: 3}
-  m_PrefabInstance: {fileID: 1423668938}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1477831149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 496295917956743886, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
@@ -7593,22 +7295,7 @@ MonoBehaviour:
   purchasePrice: 260
   rentPrices: 160000006e0000004a01000020030000cf0300007e040000
   cellIndex: 15
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -7641,22 +7328,7 @@ MonoBehaviour:
   purchasePrice: 100
   rentPrices: 060000001e0000005a0000000e0100009001000026020000
   cellIndex: 3
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -7689,30 +7361,10 @@ MonoBehaviour:
   purchasePrice: 100
   rentPrices: 060000001e0000005a0000000e0100009001000026020000
   cellIndex: 2
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
---- !u!1 &1566517030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7557341987510661863, guid: 7d0ca22a25de48846b0e118e1b6b5057, type: 3}
-  m_PrefabInstance: {fileID: 425752023}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1578197108 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6181889393040205060, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
@@ -7741,22 +7393,7 @@ MonoBehaviour:
   positionOnBoard: 25
   purchasePrice: 200
   rentPrices: 3200000064000000c800000090010000
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   isMortgaged: 0
 --- !u!1 &1585141239 stripped
 GameObject:
@@ -7823,22 +7460,7 @@ MonoBehaviour:
   purchasePrice: 400
   rentPrices: 32000000c80000005802000078050000a4060000d0070000
   cellIndex: 21
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -8267,22 +7889,7 @@ MonoBehaviour:
   purchasePrice: 280
   rentPrices: 1800000078000000680100005203000001040000b0040000
   cellIndex: 16
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -8672,22 +8279,7 @@ MonoBehaviour:
   purchasePrice: 180
   rentPrices: 0e00000046000000c800000026020000ee020000b6030000
   cellIndex: 9
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -8742,22 +8334,7 @@ MonoBehaviour:
   purchasePrice: 60
   rentPrices: 04000000140000003c000000b400000040010000c2010000
   cellIndex: 1
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -8789,22 +8366,7 @@ MonoBehaviour:
   positionOnBoard: 5
   purchasePrice: 200
   rentPrices: 3200000064000000c800000090010000
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   isMortgaged: 0
 --- !u!1 &1770888746
 GameObject:
@@ -9732,17 +9294,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 4, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1901013220 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5562484886793738916, guid: 7d0ca22a25de48846b0e118e1b6b5057, type: 3}
-  m_PrefabInstance: {fileID: 425752023}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1910546206
 GameObject:
   m_ObjectHideFlags: 0
@@ -9866,22 +9417,7 @@ MonoBehaviour:
   purchasePrice: 320
   rentPrices: 1c00000096000000c2010000e8030000b004000078050000
   cellIndex: 19
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -10153,17 +9689,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017361745}
   m_CullTransparentMesh: 1
---- !u!114 &2022557807 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4476886136622204903, guid: 9797bd000b9cdf841ab4ac9f3cb9183e, type: 3}
-  m_PrefabInstance: {fileID: 1178647644}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2040137912
 GameObject:
   m_ObjectHideFlags: 0
@@ -10451,22 +9976,7 @@ MonoBehaviour:
   purchasePrice: 60
   rentPrices: 020000000a0000001e0000005a000000a0000000fa000000
   cellIndex: 0
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -10600,22 +10110,7 @@ MonoBehaviour:
   purchasePrice: 240
   rentPrices: 14000000640000002c010000ee0200009d0300004c040000
   cellIndex: 13
-  owner:
-    piece: {fileID: 0}
-    currentPosition: 0
-    isMoving: 0
-    playerNumber: 0
-    playerColor: {r: 0, g: 0, b: 0, a: 0}
-    playerName: 
-    money: 1500
-    isInJail: 0
-    turnsInJail: 0
-    countOfSteps: 1
-    playerCam: {fileID: 0}
-    ownedTransports: []
-    ownedProperties: []
-    offsetPosition: {x: 0, y: 0, z: 0}
-    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  owner: {fileID: 0}
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
@@ -10907,11 +10402,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145370889}
   m_CullTransparentMesh: 1
---- !u!1 &2145549412 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6946710229209796234, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
-  m_PrefabInstance: {fileID: 2011529636}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2145549413 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6946710229209796278, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
@@ -11541,7 +11031,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292172376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37cee9fc49a2c5b45813d37112562cb2, type: 3}
   m_Name: 
