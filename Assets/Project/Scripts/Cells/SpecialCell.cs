@@ -51,7 +51,7 @@ public class SpecialCell : MonopolyCell
         }
         else if (eventText.Contains("тюрьму"))
         {
-            player.GoToJail(player);
+            player.GoToJail();
         }
     }
 

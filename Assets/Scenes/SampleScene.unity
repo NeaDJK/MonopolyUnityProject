@@ -1053,6 +1053,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136807742}
   m_CullTransparentMesh: 1
+--- !u!1 &168893940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7557341987510661863, guid: 7d0ca22a25de48846b0e118e1b6b5057, type: 3}
+  m_PrefabInstance: {fileID: 425752023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &168893941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168893940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760aa1a381f9e3740be098fbcaefd06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece: {fileID: 168893940}
+  currentPosition: 0
+  isMoving: 0
+  playerNumber: 0
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerName: Lily
+  money: 1500
+  isInJail: 0
+  turnsInJail: 0
+  countOfSteps: 1
+  playerCam: {fileID: 333754635}
+  ownedTransports: []
+  ownedProperties: []
+  offsetPosition: {x: 0, y: 0, z: 0}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &172519332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,10 +1898,10 @@ MonoBehaviour:
   cellSize: 1.5
   boardBaseHeight: 0
   players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2145549414}
+  - {fileID: 168893941}
+  - {fileID: 1094168275}
+  - {fileID: 874824949}
   playerBaseHeight: 0.4
   moveSpeed: 5
   jumpHeight: 0.3
@@ -2135,6 +2167,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324277366}
   m_CullTransparentMesh: 1
+--- !u!114 &333754635 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5562484886793738916, guid: 7d0ca22a25de48846b0e118e1b6b5057, type: 3}
+  m_PrefabInstance: {fileID: 425752023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &337842119 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1547904381707564793, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
@@ -3830,6 +3873,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630008853}
   m_CullTransparentMesh: 1
+--- !u!114 &633414845 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4476886136622204903, guid: 9797bd000b9cdf841ab4ac9f3cb9183e, type: 3}
+  m_PrefabInstance: {fileID: 1178647644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &651770200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8842895438175144085, guid: ec9d735971d3813409aa296a51557163, type: 3}
+  m_PrefabInstance: {fileID: 1423668938}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &652380406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4689,6 +4754,38 @@ MonoBehaviour:
   rentPrices: 3200000064000000c800000090010000
   owner: {fileID: 0}
   isMortgaged: 0
+--- !u!1 &874824948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 466848570732779717, guid: 9797bd000b9cdf841ab4ac9f3cb9183e, type: 3}
+  m_PrefabInstance: {fileID: 1178647644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &874824949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874824948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760aa1a381f9e3740be098fbcaefd06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece: {fileID: 874824948}
+  currentPosition: 0
+  isMoving: 0
+  playerNumber: 0
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerName: Petr
+  money: 1500
+  isInJail: 0
+  turnsInJail: 0
+  countOfSteps: 1
+  playerCam: {fileID: 633414845}
+  ownedTransports: []
+  ownedProperties: []
+  offsetPosition: {x: 0, y: 0, z: 0}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &908862966 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3225269619057541895, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
@@ -5537,6 +5634,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088329916}
   m_CullTransparentMesh: 1
+--- !u!1 &1094168274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7084220933333533961, guid: ec9d735971d3813409aa296a51557163, type: 3}
+  m_PrefabInstance: {fileID: 1423668938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1094168275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094168274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760aa1a381f9e3740be098fbcaefd06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece: {fileID: 1094168274}
+  currentPosition: 0
+  isMoving: 0
+  playerNumber: 0
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerName: Ivan
+  money: 1500
+  isInJail: 0
+  turnsInJail: 0
+  countOfSteps: 1
+  playerCam: {fileID: 651770200}
+  ownedTransports: []
+  ownedProperties: []
+  offsetPosition: {x: 0, y: 0, z: 0}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1097553924
 GameObject:
   m_ObjectHideFlags: 0
@@ -5643,6 +5772,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7879659933759579814, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
   m_PrefabInstance: {fileID: 3387655499110384941}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1156392739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4906209482998279895, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
+  m_PrefabInstance: {fileID: 2011529636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1170904433
 GameObject:
   m_ObjectHideFlags: 0
@@ -9610,7 +9750,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7384453353841555818, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
 --- !u!1 &2017361745
 GameObject:
@@ -10114,6 +10255,11 @@ MonoBehaviour:
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
+--- !u!1 &2081960352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6946710229209796234, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
+  m_PrefabInstance: {fileID: 2011529636}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2113522619
 GameObject:
   m_ObjectHideFlags: 0
@@ -10407,6 +10553,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6946710229209796278, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
   m_PrefabInstance: {fileID: 2011529636}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2145549414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081960352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760aa1a381f9e3740be098fbcaefd06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece: {fileID: 2081960352}
+  currentPosition: 0
+  isMoving: 0
+  playerNumber: 0
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerName: Nik
+  money: 1500
+  isInJail: 0
+  turnsInJail: 0
+  countOfSteps: 1
+  playerCam: {fileID: 1156392739}
+  ownedTransports: []
+  ownedProperties: []
+  offsetPosition: {x: 0, y: 0, z: 0}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &3387655499110384941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10974,6 +11147,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1f80d49d1af49ed4bae1c7081d0c0126, type: 2}
+    - target: {fileID: 8874584774866245419, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8947116273007263553, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -11013,7 +11190,6 @@ MonoBehaviour:
   cellType: 0
   cellName: "\u0421\u0442\u0430\u0440\u0442"
   positionOnBoard: 0
-  startMoney: 200
 --- !u!4 &3387655499110384944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7010967912932481597, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}

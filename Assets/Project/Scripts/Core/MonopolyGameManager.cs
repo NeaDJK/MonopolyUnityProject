@@ -33,25 +33,21 @@ public class MonopolyGameManager : MonoBehaviour
     private int stepsRemaining = 0;
     private bool isGameInitialized = false;
 
-    private PropertyCell currentPurchaseCell;
     private PropertyCell currentProperty;
     private TransportCell currentTransport;
+
+    private PlayerStatusUI _playerStatusUI;
 
     public static event Action OnDiceRolled;
     public static event Action<Player> OnPlayerMoved;
     public static event Action OnPropertyChanged;
     public static event Action<string> OnGameEvent;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TryRollDice();
+            StartCoroutine(TryRollDice());
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -61,10 +57,12 @@ public class MonopolyGameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            if (currentTransport != null)
-            {
-                currentTransport.TryPurchase(GetCurrentPlayer());
-            }
+            currentTransport.TryPurchase(GetCurrentPlayer());
+
+            //if (currentTransport != null)
+            //{
+                
+            //}
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -88,7 +86,55 @@ public class MonopolyGameManager : MonoBehaviour
         }
     }
 
-    void InitializePlayers()
+    public IEnumerator TryRollDice()
+    {
+        if (GetCurrentPlayer().isInJail)
+        {
+            GetCurrentPlayer().HandleJailedPlayer();
+            EndTurn();
+
+            yield break;
+        }
+
+        if (waitingForDiceRoll && !AnyPlayerMoving() && isGameInitialized)
+            RollDice();
+    }
+
+    public void LogEvent(string message)
+    {
+        OnGameEvent?.Invoke(message);
+        Debug.Log(message);
+    }
+
+    public MonopolyCell GetCurrentCell(Player player) => cells[player.currentPosition].GetComponent<MonopolyCell>();
+
+    public Player GetCurrentPlayer() => players[currentPlayerIndex];
+
+    private void ProcessCell(int cellIndex, Player player)
+    {
+        currentProperty = null;
+        currentTransport = null;
+
+        if (cells[cellIndex].TryGetComponent(out TransportCell transport))
+        {
+            currentTransport = transport;
+            transport.OnPlayerLand(player);
+        }
+
+        if (cells[cellIndex].TryGetComponent(out PropertyCell property))
+        {
+            currentProperty = property;
+            property.OnPlayerLand(player);
+        }
+        else
+        {
+            cells[cellIndex].GetComponent<MonopolyCell>().OnPlayerLand(player);
+        }
+
+        OnPlayerMoved?.Invoke(player);
+    }
+
+    private void InitializePlayers()
     {
         if (cells == null || cells.Length == 0)
         {
@@ -126,6 +172,7 @@ public class MonopolyGameManager : MonoBehaviour
             players[i].offsetPosition = offsets[i];
             players[i].targetRotation = Quaternion.identity;
             players[i].currentPosition = 0;
+            players[i].isInJail = false;
 
             Vector3 spawnPos = GetExactCellPosition(0);
             spawnPos.y = boardBaseHeight + playerBaseHeight;
@@ -147,13 +194,7 @@ public class MonopolyGameManager : MonoBehaviour
         }
     }
 
-    public void TryRollDice()
-    {
-        if (waitingForDiceRoll && !AnyPlayerMoving() && isGameInitialized)
-            RollDice();
-    }
-
-    void RollDice()
+    private void RollDice()
     {
         int dice1 = UnityEngine.Random.Range(1, 7);
         int dice2 = UnityEngine.Random.Range(1, 7);
@@ -172,30 +213,33 @@ public class MonopolyGameManager : MonoBehaviour
         OnDiceRolled?.Invoke();
     }
 
-    IEnumerator MovePlayerCoroutine(int playerIndex)
+    private void SnapToExactPosition(int playerIndex)
+    {
+        Player player = players[playerIndex];
+        Vector3 exactPos = GetExactCellPosition(player.currentPosition);
+        exactPos.y = boardBaseHeight + playerBaseHeight;
+        exactPos += new Vector3(player.offsetPosition.x, 0, player.offsetPosition.z);
+        player.piece.transform.position = exactPos;
+    }
+
+    private void EndTurn()
+    {
+        players[currentPlayerIndex].playerCam.Priority = 5;
+
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
+        waitingForDiceRoll = true;
+    }
+    private bool AnyPlayerMoving()
+    {
+        foreach (Player player in players)
+            if (player != null && player.isMoving) return true;
+        return false;
+    }
+
+    private IEnumerator MovePlayerCoroutine(int playerIndex)
     {
         Player player = players[playerIndex];
         player.isMoving = true;
-
-        if (player.isInJail)
-        {
-            // Обрабатываем пропуск хода
-            player.turnsInJail--;
-            if (player.turnsInJail <= 0)
-            {
-                player.isInJail = false;
-                LogEvent($"{player.playerName} выходит из тюрьмы!");
-            }
-            else
-            {
-                LogEvent($"{player.playerName} пропускает ход (осталось: {player.turnsInJail})");                
-            }
-
-            // Немедленный переход к следующему игроку
-            EndTurn();
-            player.isMoving = false;
-            yield break;
-        }
 
         while (stepsRemaining > 0)
         {
@@ -209,11 +253,12 @@ public class MonopolyGameManager : MonoBehaviour
 
             if (previousPosition > player.currentPosition)
             {
-                player.AddMoney(200);
-                Debug.Log($"{player.playerName} получил $200 за проход через Старт");
+                player.AddMoney(StartCell.startMoney);
+                _playerStatusUI.UpdateStatus();
+                LogEvent($"{player.playerName} получил $200 за проход через Старт");
             }
 
-            if (System.Array.IndexOf(cornerCellIndices, nextPos) >= 0)
+            if (Array.IndexOf(cornerCellIndices, nextPos) >= 0)
             {
                 float newRotY = player.piece.transform.eulerAngles.y + rotationAngle;
                 player.targetRotation = Quaternion.Euler(0, newRotY, 0);
@@ -238,40 +283,7 @@ public class MonopolyGameManager : MonoBehaviour
         ProcessCell(player.currentPosition, player);
     }
 
-    private void ProcessCell(int cellIndex, Player player)
-    {
-        currentProperty = null;
-
-        if (cells[cellIndex].TryGetComponent(out TransportCell transport))
-        {
-            currentTransport = transport;
-            transport.OnPlayerLand(player);
-        }
-
-        if (cells[cellIndex].TryGetComponent(out PropertyCell property))
-        {
-            currentProperty = property;
-            property.OnPlayerLand(player);
-        }
-        else
-        {
-            cells[cellIndex].GetComponent<MonopolyCell>().OnPlayerLand(player);
-        }        
-
-        OnPlayerMoved?.Invoke(player);
-    }
-
-    public Player GetCurrentPlayer()
-    {
-        return players[currentPlayerIndex];
-    }
-
-    public MonopolyCell GetCurrentCell(Player player)
-    {
-        return cells[player.currentPosition].GetComponent<MonopolyCell>();
-    }
-
-    IEnumerator AnimateMoveToPosition(Player player, Vector3 targetPos)
+    private IEnumerator AnimateMoveToPosition(Player player, Vector3 targetPos)
     {
         GameObject piece = player.piece;
         Vector3 startPos = piece.transform.position;
@@ -307,16 +319,7 @@ public class MonopolyGameManager : MonoBehaviour
         }
     }
 
-    void SnapToExactPosition(int playerIndex)
-    {
-        Player player = players[playerIndex];
-        Vector3 exactPos = GetExactCellPosition(player.currentPosition);
-        exactPos.y = boardBaseHeight + playerBaseHeight;
-        exactPos += new Vector3(player.offsetPosition.x, 0, player.offsetPosition.z);
-        player.piece.transform.position = exactPos;
-    }
-
-    Vector3 GetExactCellPosition(int cellIndex)
+    private Vector3 GetExactCellPosition(int cellIndex)
     {
         if (cellIndex >= 0 && cellIndex < cells.Length)
         {
@@ -325,35 +328,5 @@ public class MonopolyGameManager : MonoBehaviour
             return pos;
         }
         return Vector3.zero;
-    }
-
-    bool AnyPlayerMoving()
-    {
-        foreach (Player player in players)
-            if (player != null && player.isMoving) return true;
-        return false;
-    }
-
-    void EndTurn()
-    {
-        players[currentPlayerIndex].playerCam.Priority = 5;
-
-        if (players[currentPlayerIndex].isInJail)
-        {
-            players[currentPlayerIndex].turnsInJail--;
-            if (players[currentPlayerIndex].turnsInJail <= 0)
-            {
-                players[currentPlayerIndex].isInJail = false;
-                LogEvent($"{players[currentPlayerIndex].playerName} выходит из тюрьмы");
-            }
-        }
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
-        waitingForDiceRoll = true;
-    }
-
-    public void LogEvent(string message)
-    {
-        OnGameEvent?.Invoke(message);
-        Debug.Log(message);
     }
 }

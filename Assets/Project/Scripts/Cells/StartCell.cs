@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StartCell : MonopolyCell
 {
-    public int startMoney = 200;
+    public static int startMoney = 200;
 
     public override void OnPlayerLand(Player player)
     {
-        player.AddMoney(startMoney);
-        MonopolyGameManager.Instance.LogEvent($"{player.playerName} проходит старт и получает ${startMoney}.");
+        //player.AddMoney(startMoney);
+        MonopolyGameManager.Instance.LogEvent($"{player.playerName} находится на клетке старта.");
     }
 }

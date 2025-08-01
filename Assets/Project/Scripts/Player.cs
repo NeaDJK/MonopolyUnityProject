@@ -29,14 +29,30 @@ public class Player : MonoBehaviour
     public void PayMoney(int amount)
     {
         money -= amount;
-        if (money < 0) Debug.Log($"{playerName} обанкротился!");
+        if (money < 0) 
+            Debug.Log($"{playerName} обанкротился!");
     }
 
-    public void GoToJail(Player player)
+    public void GoToJail()
     {
         isInJail = true;
         turnsInJail = 3;
 
-        //MonopolyGameManager.OnGameEvent?.Invoke($"{player.playerName} отправлен в тюрьму!");
+        MonopolyGameManager.Instance.LogEvent($"{playerName} отправлен в тюрьму!");
+    }
+
+    public void HandleJailedPlayer()
+    {
+        turnsInJail--;
+
+        if (turnsInJail <= 0)
+        {
+            isInJail = false;
+            MonopolyGameManager.Instance.LogEvent($"{playerName} выходит из тюрьмы");
+        }
+        else
+        {
+            MonopolyGameManager.Instance.LogEvent($"Осталось ходов в тюрьме: {turnsInJail}");
+        }
     }
 }

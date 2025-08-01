@@ -22,7 +22,7 @@ public class PlayerStatusUI : MonoBehaviour
         MonopolyGameManager.OnPropertyChanged -= UpdateStatus;
     }
 
-    private void UpdateStatus()
+    public void UpdateStatus()
     {
         Player player = MonopolyGameManager.Instance.GetCurrentPlayer();
 
