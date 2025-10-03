@@ -12,13 +12,13 @@ public class PlayerStatusUI : MonoBehaviour
 
     private void OnEnable()
     {
-        MonopolyGameManager.OnDiceRolled += UpdateStatus;
+        PlayerMover.OnDiceRolled += UpdateStatus;
         MonopolyGameManager.OnPropertyChanged += UpdateStatus;
     }
 
     private void OnDisable()
     {
-        MonopolyGameManager.OnDiceRolled -= UpdateStatus;
+        PlayerMover.OnDiceRolled -= UpdateStatus;
         MonopolyGameManager.OnPropertyChanged -= UpdateStatus;
     }
 
@@ -26,21 +26,18 @@ public class PlayerStatusUI : MonoBehaviour
     {
         Player player = MonopolyGameManager.Instance.GetCurrentPlayer();
 
-        playerNameText.text = $"Игрок: {player.playerName}";
-        playerBalanceText.text = $"Баланс: ${player.money}";
+        playerNameText.text = $"{player.playerName}";
+        playerBalanceText.text = $"{player.money}$";
         UpdateOwnedAssets(player);
     }
 
     private void UpdateOwnedAssets(Player player)
     {
-        ownedPropertiesText.text = "Недвижимость:\n" +
-            (player.ownedProperties.Count > 0
-                ? string.Join("\n", player.ownedProperties.Select(p => p.cellName))
-                : "Нет");
+        ownedPropertiesText.text = "" + (player.ownedProperties.Count > 0 ? string.Join("\n", player.ownedProperties.Select(p => p.cellName)) : "Нет");
 
-        ownedTransportsText.text = "Транспорт:\n" +
-            (player.ownedTransports.Count > 0
-                ? string.Join("\n", player.ownedTransports.Select(t => t.cellName))
-                : "Нет");
+        // ownedTransportsText.text = "Транспорт:\n" +
+        //     (player.ownedTransports.Count > 0
+        //         ? string.Join("\n", player.ownedTransports.Select(t => t.cellName))
+        //         : "Нет");
     }
 }

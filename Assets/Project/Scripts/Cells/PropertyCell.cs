@@ -85,7 +85,7 @@ public class PropertyCell : MonopolyCell
         buyer.ownedProperties.Add(this);
         isActiveForPurchase = false;
 
-        InventoryManager.Instance.AddNewCard(cellIndex);
+        //InventoryManager.Instance.AddNewCard(cellIndex);
         
         MonopolyGameManager.Instance.LogEvent($"[ПОКУПКА] {buyer.playerName} стал владельцем {cellName}");
         MonopolyGameManager.Instance.LogEvent($"Новый баланс: ${buyer.money}");

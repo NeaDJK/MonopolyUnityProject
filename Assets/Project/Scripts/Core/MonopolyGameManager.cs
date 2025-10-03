@@ -19,35 +19,44 @@ public class MonopolyGameManager : MonoBehaviour
 
     [Header("Player Settings")]
     public Player[] players;
-    public float playerBaseHeight = 0.5f;
-    [Header("Movement Settings")]
-    public float moveSpeed = 5f;
-    public float jumpHeight = 0.3f;
-    public float rotationSpeed = 10f;
-    public float rotationAngle = 90f;
-    public float movementThreshold = 0.01f;
-    public float minMoveTime = 0.2f;
+    public float playerBaseHeight = 0.5f;        
+    
+    public bool isGameInitialized = false;
 
-    private int currentPlayerIndex = 0;
-    private bool waitingForDiceRoll = true;
-    private int stepsRemaining = 0;
-    private bool isGameInitialized = false;
-
-    private PropertyCell currentProperty;
-    private TransportCell currentTransport;
-
-    private PlayerStatusUI _playerStatusUI;
-
-    public static event Action OnDiceRolled;
     public static event Action<Player> OnPlayerMoved;
     public static event Action OnPropertyChanged;
     public static event Action<string> OnGameEvent;
 
-    void Update()
+    private int currentPlayerIndex = 0;
+
+    private PropertyCell currentProperty = new();
+    private TransportCell currentTransport;    
+    private PlayerMover _playerMover;
+
+    private void Start()
+    {
+        if (_playerMover == null)
+        {
+            _playerMover = PlayerMover.Instance;
+        }
+    }
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(TryRollDice());
+            //if (_playerMover == null)
+            //{
+            //    Debug.LogWarning("PlayerMover is not assigned!");
+            //    return;
+            //}
+
+            Player player = players[currentPlayerIndex];
+
+            PlayerMover.Instance.Move();
+            ProcessCell(player.currentPosition, player);
+
+            OnPlayerMoved?.Invoke(player);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -67,11 +76,17 @@ public class MonopolyGameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            EndTurn();
+            if (_playerMover == null)
+            {
+                Debug.LogWarning("PlayerMover is not assigned!");
+                return;
+            }
+
+            PlayerMover.Instance.EndTurn();
         }
     }
 
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -84,21 +99,7 @@ public class MonopolyGameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public IEnumerator TryRollDice()
-    {
-        if (GetCurrentPlayer().isInJail)
-        {
-            GetCurrentPlayer().HandleJailedPlayer();
-            EndTurn();
-
-            yield break;
-        }
-
-        if (waitingForDiceRoll && !AnyPlayerMoving() && isGameInitialized)
-            RollDice();
-    }
+    }    
 
     public void LogEvent(string message)
     {
@@ -130,8 +131,6 @@ public class MonopolyGameManager : MonoBehaviour
         {
             cells[cellIndex].GetComponent<MonopolyCell>().OnPlayerLand(player);
         }
-
-        OnPlayerMoved?.Invoke(player);
     }
 
     private void InitializePlayers()
@@ -191,131 +190,6 @@ public class MonopolyGameManager : MonoBehaviour
             }
 
             Debug.Log($"[Monopoly] Player {players[i].playerName} initialized at position {spawnPos}");
-        }
-    }
-
-    private void RollDice()
-    {
-        int dice1 = UnityEngine.Random.Range(1, 7);
-        int dice2 = UnityEngine.Random.Range(1, 7);
-        int diceResult = dice1 + dice2;
-
-        Debug.Log($"{players[currentPlayerIndex].playerName} rolled {dice1}+{dice2}={diceResult}");
-
-        stepsRemaining = diceResult;
-        waitingForDiceRoll = false;
-
-        if (players[currentPlayerIndex].movementCoroutine != null)
-            StopCoroutine(players[currentPlayerIndex].movementCoroutine);
-
-        players[currentPlayerIndex].movementCoroutine = StartCoroutine(MovePlayerCoroutine(currentPlayerIndex));
-
-        OnDiceRolled?.Invoke();
-    }
-
-    private void SnapToExactPosition(int playerIndex)
-    {
-        Player player = players[playerIndex];
-        Vector3 exactPos = GetExactCellPosition(player.currentPosition);
-        exactPos.y = boardBaseHeight + playerBaseHeight;
-        exactPos += new Vector3(player.offsetPosition.x, 0, player.offsetPosition.z);
-        player.piece.transform.position = exactPos;
-    }
-
-    private void EndTurn()
-    {
-        players[currentPlayerIndex].playerCam.Priority = 5;
-
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
-        waitingForDiceRoll = true;
-    }
-    private bool AnyPlayerMoving()
-    {
-        foreach (Player player in players)
-            if (player != null && player.isMoving) return true;
-        return false;
-    }
-
-    private IEnumerator MovePlayerCoroutine(int playerIndex)
-    {
-        Player player = players[playerIndex];
-        player.isMoving = true;
-
-        while (stepsRemaining > 0)
-        {
-            int nextPos = (player.currentPosition + 1) % cells.Length;
-            Vector3 targetPos = GetExactCellPosition(nextPos);
-            targetPos.y += playerBaseHeight;
-            targetPos += new Vector3(player.offsetPosition.x, 0, player.offsetPosition.z);
-
-            int previousPosition = player.currentPosition;
-            player.currentPosition = (player.currentPosition + 1) % cells.Length;
-
-            if (previousPosition > player.currentPosition)
-            {
-                player.AddMoney(StartCell.startMoney);
-                _playerStatusUI.UpdateStatus();
-                LogEvent($"{player.playerName} получил $200 за проход через Старт");
-            }
-
-            if (Array.IndexOf(cornerCellIndices, nextPos) >= 0)
-            {
-                float newRotY = player.piece.transform.eulerAngles.y + rotationAngle;
-                player.targetRotation = Quaternion.Euler(0, newRotY, 0);
-            }
-
-            float moveStartTime = Time.time;
-            yield return StartCoroutine(AnimateMoveToPosition(player, targetPos));
-
-            player.currentPosition = nextPos;
-            stepsRemaining--;
-
-            if (Time.time - moveStartTime < minMoveTime)
-                yield return new WaitForSeconds(minMoveTime - (Time.time - moveStartTime));
-        }
-
-        SnapToExactPosition(playerIndex);
-        player.isMoving = false;
-        player.movementCoroutine = null;
-
-        players[currentPlayerIndex].playerCam.Priority = 20;
-
-        ProcessCell(player.currentPosition, player);
-    }
-
-    private IEnumerator AnimateMoveToPosition(Player player, Vector3 targetPos)
-    {
-        GameObject piece = player.piece;
-        Vector3 startPos = piece.transform.position;
-        float journeyLength = Vector3.Distance(startPos, targetPos);
-        float startTime = Time.time;
-
-        while (Vector3.Distance(piece.transform.position, targetPos) > movementThreshold)
-        {
-            float fraction = Mathf.Clamp01((Time.time - startTime) * moveSpeed / journeyLength);
-            float height = Mathf.Sin(fraction * Mathf.PI) * jumpHeight;
-
-            Vector3 newPos = Vector3.Lerp(startPos, targetPos, fraction);
-            newPos.y = boardBaseHeight + playerBaseHeight + height;
-
-            piece.transform.position = newPos;
-
-            if (player.targetRotation != Quaternion.identity)
-            {
-                piece.transform.rotation = Quaternion.Slerp(
-                    piece.transform.rotation,
-                    player.targetRotation,
-                    Time.deltaTime * rotationSpeed
-                );
-
-                if (Quaternion.Angle(piece.transform.rotation, player.targetRotation) < 1f)
-                {
-                    piece.transform.rotation = player.targetRotation;
-                    player.targetRotation = Quaternion.identity;
-                }
-            }
-
-            yield return null;
         }
     }
 
