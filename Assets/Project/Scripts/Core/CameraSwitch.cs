@@ -8,9 +8,14 @@ public class CameraSwitch : MonoBehaviour
 {
     public static CameraSwitch Instance { get; private set; }
 
-    [SerializeField] private CinemachineVirtualCamera[] _cameras;
-    private int _currentCameraIndex = 0;
-    private Stack<int> _cameraHistory = new Stack<int>();
+    [SerializeField] private CinemachineVirtualCamera[] _playerCams;
+    [SerializeField] private CinemachineVirtualCamera _mainViewCam;
+    [SerializeField] private CinemachineVirtualCamera _panelMenuCam;
+
+    private CinemachineVirtualCamera _currentCamera;
+
+    [HideInInspector] public bool _isPreviousPlayerCamera;
+    [HideInInspector] public bool _isPreviousMainViewCamera;
 
     private void Awake()
     {
@@ -22,71 +27,88 @@ public class CameraSwitch : MonoBehaviour
 
     private void Start()
     {
-        // Активация первой камеры и отключение всех остальных
-        for (int i = 0; i < _cameras.Length; i++)
-        {
-            _cameras[i].gameObject.SetActive(i == 0);
-        }
+        _currentCamera = _mainViewCam;
 
-        _cameraHistory.Push(0);
+        _isPreviousPlayerCamera = false;
+        _isPreviousMainViewCamera = true;
     }
 
-    private void Update()
+    public void SwitchToPlayerCamera(int currentPlayerIndex)
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (_currentCamera != null && _playerCams.Length > 0 && _playerCams[currentPlayerIndex] != null)
         {
-            OpenScreenPanels();
+            _currentCamera.gameObject.SetActive(false);
+            _playerCams[currentPlayerIndex].gameObject.SetActive(true);
+
+            _currentCamera = _playerCams[currentPlayerIndex];
+
+            _isPreviousPlayerCamera = true;
+            _isPreviousMainViewCamera = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            CloseScreenPanels();
-        }
+        else Debug.LogError("Камеры назначены неправильно!");
     }
+
+    public void SwitchToMainViewCamera()
+    {
+        if (_mainViewCam != null && _currentCamera != null)
+        {
+            _currentCamera.gameObject.SetActive(false);
+            _mainViewCam.gameObject.SetActive(true);
+
+            _currentCamera = _mainViewCam;
+
+            _isPreviousPlayerCamera = false;
+            _isPreviousMainViewCamera = true;
+        }
+
+        else Debug.LogError("Камеры назначены неправильно!");
+    }
+
+    public void OpenPanelMenu()
+    {
+        if (_panelMenuCam != null && _currentCamera != null)
+        {
+            _currentCamera.gameObject.SetActive(false);
+            _panelMenuCam.gameObject.SetActive(true);
+
+            _currentCamera = _panelMenuCam;
+        }
+
+        else Debug.LogError("Камеры назначены неправильно!");
+    }
+
 
     /// <summary>
-    /// Переключение на камеру с заданным инедексом
+    /// Возвращение к игроку
     /// </summary>
-    public void SwitchToCamera(int index)
+    public void ClosePanelMenu(int currentPlayerIndex)
     {
-        if (index >= 0 && index < _cameras.Length && index != _currentCameraIndex)
+        if (_panelMenuCam != null && _playerCams.Length > 0 && _playerCams[currentPlayerIndex] != null && _currentCamera != null)
         {
-            _cameraHistory.Push(_currentCameraIndex);
+            _panelMenuCam.gameObject.SetActive(false);
+            _playerCams[currentPlayerIndex].gameObject.SetActive(true);
 
-            _cameras[_currentCameraIndex].gameObject.SetActive(false);
-            _cameras[index].gameObject.SetActive(true);
-            _currentCameraIndex = index;
+            _currentCamera = _playerCams[currentPlayerIndex];
         }
+
+        else Debug.LogError("Камеры назначены неправильно!");
     }
 
-    /// <summary>
-    /// Переключение на следующую по индексу камеру
-    /// </summary>
-    private void NextCamera()
-    {
-        int nextIndex = (_currentCameraIndex + 1) % _cameras.Length;
-        SwitchToCamera(nextIndex);
-    }
 
     /// <summary>
-    /// Открытие меню панелей
+    /// Возвращение к mainView
     /// </summary>
-    private void OpenScreenPanels() 
+    public void ClosePanelMenu()
     {
-        SwitchToCamera(1);
-    }
-
-    /// <summary>
-    /// Закрытие меню панелей
-    /// </summary>
-    public void CloseScreenPanels()
-    {
-        if (_cameraHistory.Count > 1 && _cameraHistory.Pop() != 1) // Проверяем, что есть куда возвращаться
+        if (_panelMenuCam != null && _currentCamera != null)
         {
-            // Извлекаем предыдущую камеру из истории
-            int previousIndex = _cameraHistory.Pop();
+            _panelMenuCam.gameObject.SetActive(false);
+            _mainViewCam.gameObject.SetActive(true);
 
-            SwitchToCamera(previousIndex);
+            _currentCamera = _mainViewCam;
         }
+
+        else Debug.LogError("Камеры назначены неправильно!");
     }
 }

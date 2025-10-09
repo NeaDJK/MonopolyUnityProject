@@ -2232,13 +2232,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71b3de50a1462a4d827a709bd8a285b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameras:
-  - {fileID: 982549771}
-  - {fileID: 469553860}
+  _playerCams:
   - {fileID: 1156392739}
   - {fileID: 333754635}
   - {fileID: 651770200}
   - {fileID: 633414845}
+  _mainViewCam: {fileID: 982549771}
+  _panelMenuCam: {fileID: 469553860}
+  _isPreviousPlayerCamera: 0
+  _isPreviousMainViewCamera: 0
 --- !u!4 &259216654
 Transform:
   m_ObjectHideFlags: 0

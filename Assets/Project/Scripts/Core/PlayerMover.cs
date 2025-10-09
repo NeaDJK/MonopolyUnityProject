@@ -56,6 +56,27 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            _cameraSwitch.OpenPanelMenu();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_cameraSwitch._isPreviousPlayerCamera)
+            {
+                _cameraSwitch.ClosePanelMenu(currentPlayerIndex);
+            }
+
+            if (_cameraSwitch._isPreviousMainViewCamera)
+            {
+                _cameraSwitch.ClosePanelMenu();
+            }
+        }
+    }
+
     public void Move() => StartCoroutine(TryRollDice());
     
     public IEnumerator TryRollDice()
@@ -93,8 +114,7 @@ public class PlayerMover : MonoBehaviour
 
     public void EndTurn()
     {
-        //_gameManager.players[currentPlayerIndex].playerCam.Priority = 5;
-        _cameraSwitch.SwitchToCamera(0);
+        _cameraSwitch.SwitchToMainViewCamera();
 
         currentPlayerIndex = (currentPlayerIndex + 1) % _gameManager.players.Length;
         waitingForDiceRoll = true;
@@ -171,9 +191,7 @@ public class PlayerMover : MonoBehaviour
         player.isMoving = false;
         player.movementCoroutine = null;
 
-        // _gameManager.players[currentPlayerIndex].playerCam.Priority = 20;     
-        _cameraSwitch.SwitchToCamera(currentPlayerIndex + 2);
-          
+        _cameraSwitch.SwitchToPlayerCamera(currentPlayerIndex);          
     }
 
     private IEnumerator AnimateMoveToPosition(Player player, Vector3 targetPos)
