@@ -20,7 +20,7 @@ m_EmbeddedPackageManifests:
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: C:/UnityProjects/Monopoly/Packages
-m_EditorVersion: 2021.3.45f1 (0da89fac8e79)
+m_EditorVersion: 2021.3.45f2 (88f88f591b2e)
 m_ResolvedPackages:
 - packageId: com.unity.cinemachine@2.10.3
   testable: 0
@@ -116,6 +116,7 @@ m_ResolvedPackages:
     - 2.10.2
     - 2.10.3
     - 2.10.4
+    - 2.10.5
     - 3.0.0-pre.3
     - 3.0.0-pre.4
     - 3.0.0-pre.5
@@ -292,12 +293,18 @@ m_ResolvedPackages:
     - 2.7.1
     - 2.8.1
     - 2.8.2
+    - 2.9.1
+    - 2.9.2
+    - 2.9.3
     compatible:
     - 2.5.2
     - 2.6.0
     - 2.7.1
     - 2.8.1
     - 2.8.2
+    - 2.9.1
+    - 2.9.2
+    - 2.9.3
     verified: 2.5.2
   dependencies: []
   resolvedDependencies: []
@@ -494,12 +501,16 @@ m_ResolvedPackages:
     - 3.0.34
     - 3.0.35
     - 3.0.36
+    - 3.0.37
+    - 3.0.38
     compatible:
     - 3.0.31
     - 3.0.34
     - 3.0.35
     - 3.0.36
-    verified: 3.0.36
+    - 3.0.37
+    - 3.0.38
+    verified: 3.0.38
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -576,10 +587,12 @@ m_ResolvedPackages:
     - 2.0.21
     - 2.0.22
     - 2.0.23
+    - 2.0.25
     compatible:
     - 2.0.22
     - 2.0.23
-    verified: 2.0.23
+    - 2.0.25
+    verified: 2.0.25
   dependencies:
   - name: com.unity.test-framework
     version: 1.1.9
@@ -948,6 +961,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.10
     - 3.2.0-pre.11
     - 3.2.0-pre.12
+    - 3.2.0-pre.13
     - 4.0.0-pre.1
     - 4.0.0-pre.2
     compatible:
@@ -967,6 +981,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.10
     - 3.2.0-pre.11
     - 3.2.0-pre.12
+    - 3.2.0-pre.13
     verified: 3.0.9
   dependencies:
   - name: com.unity.ugui
@@ -1115,6 +1130,7 @@ m_ResolvedPackages:
     - 1.8.6
     - 1.8.7
     - 1.8.8
+    - 1.8.9
     compatible:
     - 1.6.5
     - 1.7.0-pre.1
@@ -1136,6 +1152,7 @@ m_ResolvedPackages:
     - 1.8.6
     - 1.8.7
     - 1.8.8
+    - 1.8.9
     verified: 1.6.5
   dependencies:
   - name: com.unity.modules.audio
@@ -3251,9 +3268,11 @@ m_ResolvedPackages:
     - 0.1.0-preview.1
     - 0.1.0-preview.2
     - 1.0.0
+    - 1.0.1
     compatible:
     - 1.0.0
-    verified: 1.0.0
+    - 1.0.1
+    verified: 1.0.1
   dependencies: []
   resolvedDependencies: []
   keywords:
@@ -3321,10 +3340,12 @@ m_ResolvedPackages:
     - 1.1.1
     - 1.2.2
     - 1.2.3
+    - 1.2.4
     compatible:
     - 1.2.2
     - 1.2.3
-    verified: 1.2.3
+    - 1.2.4
+    verified: 1.2.4
   dependencies: []
   resolvedDependencies: []
   keywords: []
@@ -3405,9 +3426,11 @@ m_ResolvedPackages:
     - 1.2.4
     - 1.2.5
     - 1.2.6
+    - 1.2.7
     compatible:
     - 1.2.6
-    verified: 1.2.6
+    - 1.2.7
+    verified: 1.2.7
   dependencies:
   - name: com.unity.test-framework
     version: 1.0.16
