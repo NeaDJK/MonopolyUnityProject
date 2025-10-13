@@ -7,6 +7,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class PlayerMover : MonoBehaviour
 {
     public static PlayerMover Instance { get; private set; }
+    
 
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
@@ -25,7 +26,7 @@ public class PlayerMover : MonoBehaviour
     private MonopolyGameManager _gameManager;
     private PlayerStatusUI _playerStatusUI;
     private CameraSwitch _cameraSwitch;
-
+    
     private void Awake()
     {
         if (Instance == null)
@@ -56,32 +57,13 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            _cameraSwitch.OpenPanelMenu();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (_cameraSwitch._isPreviousPlayerCamera)
-            {
-                _cameraSwitch.ClosePanelMenu(currentPlayerIndex);
-            }
-
-            if (_cameraSwitch._isPreviousMainViewCamera)
-            {
-                _cameraSwitch.ClosePanelMenu();
-            }
-        }
-    }
-
-    public void Move() => StartCoroutine(TryRollDice());
+    public void Move() => StartCoroutine(TryRollDice(currentPlayerIndex));
     
-    public IEnumerator TryRollDice()
+    public IEnumerator TryRollDice(int playerIndex)
     {
-        if (_gameManager.GetCurrentPlayer().isInJail)
+        Player player = _gameManager.players[playerIndex];
+
+        if (player.isInJail)
         {
             _gameManager.GetCurrentPlayer().HandleJailedPlayer();
             EndTurn();
@@ -89,7 +71,7 @@ public class PlayerMover : MonoBehaviour
             yield break;
         }
 
-        if (waitingForDiceRoll && !AnyPlayerMoving() && _gameManager.isGameInitialized)
+        if (waitingForDiceRoll && !AnyPlayerMoving() && _gameManager.isGameInitialized && player.countOfSteps > 0)
             RollDice();
     }
 
@@ -98,6 +80,11 @@ public class PlayerMover : MonoBehaviour
         int dice1 = UnityEngine.Random.Range(1, 7);
         int dice2 = UnityEngine.Random.Range(1, 7);
         int diceResult = dice1 + dice2;
+
+        if (diceResult == 12)
+        {
+            _gameManager.players[currentPlayerIndex].countOfSteps++;
+        }
 
         Debug.Log($"{_gameManager.players[currentPlayerIndex].playerName} rolled {dice1}+{dice2}={diceResult}");
 
@@ -115,9 +102,18 @@ public class PlayerMover : MonoBehaviour
     public void EndTurn()
     {
         _cameraSwitch.SwitchToMainViewCamera();
-
-        currentPlayerIndex = (currentPlayerIndex + 1) % _gameManager.players.Length;
         waitingForDiceRoll = true;
+
+        if (_gameManager.players[currentPlayerIndex].countOfSteps <= 0)
+        {
+            _gameManager.players[currentPlayerIndex].countOfSteps = Player.defaultCountOfStep;
+            currentPlayerIndex = (currentPlayerIndex + 1) % _gameManager.players.Length;
+        }
+        
+        else
+        {            
+            Debug.Log($"Еще ходов: {_gameManager.players[currentPlayerIndex].countOfSteps}");
+        }
     }
 
     private Vector3 GetExactCellPosition(int cellIndex)
@@ -152,6 +148,7 @@ public class PlayerMover : MonoBehaviour
     {
         Player player = _gameManager.players[playerIndex];
         player.isMoving = true;
+        player.countOfSteps--;
 
         while (stepsRemaining > 0)
         {
@@ -228,7 +225,5 @@ public class PlayerMover : MonoBehaviour
 
             yield return null;
         }
-    }
-
-    
+    }    
 }

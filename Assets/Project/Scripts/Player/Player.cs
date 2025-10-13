@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     public int money = 1500;
     public bool isInJail;
     public int turnsInJail;
-    public int countOfSteps = 1;
+    public const int defaultCountOfStep = 1;
+    public int countOfSteps = defaultCountOfStep;
     public CinemachineVirtualCamera playerCam;
 
     public List<TransportCell> ownedTransports = new List<TransportCell>();

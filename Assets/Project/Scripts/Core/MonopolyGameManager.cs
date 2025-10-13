@@ -29,9 +29,11 @@ public class MonopolyGameManager : MonoBehaviour
 
     private int currentPlayerIndex = 0;
 
-    private PropertyCell currentProperty = new();
-    private TransportCell currentTransport;    
+    private PropertyCell currentProperty = new PropertyCell();
+    private TransportCell currentTransport;
     private PlayerMover _playerMover;
+
+    private CameraSwitch _cameraSwitch = new CameraSwitch();
 
     private void Start()
     {
@@ -83,6 +85,24 @@ public class MonopolyGameManager : MonoBehaviour
             }
 
             PlayerMover.Instance.EndTurn();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            _cameraSwitch.OpenPanelMenu();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_cameraSwitch._isPreviousPlayerCamera)
+            {
+                _cameraSwitch.ClosePanelMenu(currentPlayerIndex);
+            }
+
+            if (_cameraSwitch._isPreviousMainViewCamera)
+            {
+                _cameraSwitch.ClosePanelMenu();
+            }
         }
     }
 

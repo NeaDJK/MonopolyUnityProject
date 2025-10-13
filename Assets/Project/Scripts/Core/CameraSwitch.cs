@@ -9,10 +9,10 @@ public class CameraSwitch : MonoBehaviour
     public static CameraSwitch Instance { get; private set; }
 
     [SerializeField] private CinemachineVirtualCamera[] _playerCams;
-    [SerializeField] private CinemachineVirtualCamera _mainViewCam;
-    [SerializeField] private CinemachineVirtualCamera _panelMenuCam;
+    public CinemachineVirtualCamera _mainViewCam;
+    public CinemachineVirtualCamera _panelMenuCam;
 
-    private CinemachineVirtualCamera _currentCamera;
+    public CinemachineVirtualCamera _currentCamera { get; private set;}
 
     [HideInInspector] public bool _isPreviousPlayerCamera;
     [HideInInspector] public bool _isPreviousMainViewCamera;
@@ -28,6 +28,7 @@ public class CameraSwitch : MonoBehaviour
     private void Start()
     {
         _currentCamera = _mainViewCam;
+        Debug.Log(_currentCamera);
 
         _isPreviousPlayerCamera = false;
         _isPreviousMainViewCamera = true;
