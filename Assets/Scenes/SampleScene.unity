@@ -2239,6 +2239,7 @@ MonoBehaviour:
   - {fileID: 633414845}
   _mainViewCam: {fileID: 982549771}
   _panelMenuCam: {fileID: 469553860}
+  _currentCamera: {fileID: 982549771}
   _isPreviousPlayerCamera: 0
   _isPreviousMainViewCamera: 0
 --- !u!4 &259216654
@@ -16509,18 +16510,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2531955676923417955, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
   m_PrefabInstance: {fileID: 3387655499110384941}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3387655499110384949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292172376}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37cee9fc49a2c5b45813d37112562cb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3387655499110384950
 MonoBehaviour:
   m_ObjectHideFlags: 0

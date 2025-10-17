@@ -12,7 +12,7 @@ public class CameraSwitch : MonoBehaviour
     public CinemachineVirtualCamera _mainViewCam;
     public CinemachineVirtualCamera _panelMenuCam;
 
-    public CinemachineVirtualCamera _currentCamera { get; private set;}
+    public CinemachineVirtualCamera _currentCamera;
 
     [HideInInspector] public bool _isPreviousPlayerCamera;
     [HideInInspector] public bool _isPreviousMainViewCamera;
@@ -22,6 +22,21 @@ public class CameraSwitch : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+        }
+
+        if (_currentCamera == null && _mainViewCam != null)
+        {
+            _currentCamera = _mainViewCam;
+        }
+
+        _isPreviousPlayerCamera = false;
+        _isPreviousMainViewCamera = true;
+
+        Debug.Log($"CameraSwitch Awake: _currentCamera={_currentCamera != null}, _panelMenuCam={_panelMenuCam != null}");
+        
+        foreach (var cam in _playerCams)
+        {
+            cam.gameObject.SetActive(false);
         }
     }
 

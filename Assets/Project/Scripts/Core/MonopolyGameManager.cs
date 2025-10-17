@@ -27,19 +27,51 @@ public class MonopolyGameManager : MonoBehaviour
     public static event Action OnPropertyChanged;
     public static event Action<string> OnGameEvent;
 
-    private int currentPlayerIndex = 0;
+    //private int currentPlayerIndex = 0;
 
     private PropertyCell currentProperty = new PropertyCell();
     private TransportCell currentTransport;
     private PlayerMover _playerMover;
 
-    private CameraSwitch _cameraSwitch = new CameraSwitch();
+    private CameraSwitch _cameraSwitch;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            InitializePlayers();
+            isGameInitialized = true;
+
+            //_cameraSwitch = CameraSwitch.Instance;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        // if (_playerMover == null)
+        // {
+        //     _playerMover = PlayerMover.Instance;
+        // }
+
+        // if (_cameraSwitch == null)
+        // {
+        //     _cameraSwitch = CameraSwitch.Instance;
+        // }
+    }
 
     private void Start()
     {
         if (_playerMover == null)
         {
             _playerMover = PlayerMover.Instance;
+        }
+
+        if (_cameraSwitch == null)
+        {
+            _cameraSwitch = CameraSwitch.Instance;
         }
     }
 
@@ -53,12 +85,15 @@ public class MonopolyGameManager : MonoBehaviour
             //    return;
             //}
 
-            Player player = players[currentPlayerIndex];
+            if (_cameraSwitch._currentCamera == _cameraSwitch._mainViewCam)
+            {
+                Player player = players[_playerMover.currentPlayerIndex];
 
-            PlayerMover.Instance.Move();
-            ProcessCell(player.currentPosition, player);
+                _playerMover.Move();
+                ProcessCell(player.currentPosition, player);
 
-            OnPlayerMoved?.Invoke(player);
+                OnPlayerMoved?.Invoke(player);                
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -76,50 +111,38 @@ public class MonopolyGameManager : MonoBehaviour
             //}
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && _cameraSwitch._currentCamera != _cameraSwitch._panelMenuCam)
         {
-            if (_playerMover == null)
-            {
-                Debug.LogWarning("PlayerMover is not assigned!");
-                return;
-            }
-
-            PlayerMover.Instance.EndTurn();
+            _playerMover.EndTurn();
         }
         
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            _cameraSwitch.OpenPanelMenu();
+            if (_cameraSwitch != null)
+            {
+                _cameraSwitch.OpenPanelMenu();
+            }
+            else
+            {
+                Debug.LogError("CameraSwitch.Instance is null!");
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (_cameraSwitch._isPreviousPlayerCamera)
+            if (_cameraSwitch != null)
             {
-                _cameraSwitch.ClosePanelMenu(currentPlayerIndex);
-            }
-
-            if (_cameraSwitch._isPreviousMainViewCamera)
-            {
-                _cameraSwitch.ClosePanelMenu();
+                if (_cameraSwitch._isPreviousPlayerCamera)
+                {
+                    _cameraSwitch.ClosePanelMenu(_playerMover.currentPlayerIndex);
+                }
+                else if (_cameraSwitch._isPreviousMainViewCamera)
+                {
+                    _cameraSwitch.ClosePanelMenu();
+                }
             }
         }
     }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            InitializePlayers();
-            isGameInitialized = true;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }    
 
     public void LogEvent(string message)
     {
@@ -129,7 +152,7 @@ public class MonopolyGameManager : MonoBehaviour
 
     public MonopolyCell GetCurrentCell(Player player) => cells[player.currentPosition].GetComponent<MonopolyCell>();
 
-    public Player GetCurrentPlayer() => players[currentPlayerIndex];
+    public Player GetCurrentPlayer() => players[_playerMover.currentPlayerIndex];
 
     private void ProcessCell(int cellIndex, Player player)
     {

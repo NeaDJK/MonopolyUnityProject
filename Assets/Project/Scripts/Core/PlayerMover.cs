@@ -17,7 +17,7 @@ public class PlayerMover : MonoBehaviour
     public float movementThreshold = 0.01f;
     public float minMoveTime = 0.2f;
 
-    private int currentPlayerIndex = 0;    
+    public int currentPlayerIndex = 0;    
     public static event Action OnDiceRolled;
 
     private int stepsRemaining = 0;
@@ -188,7 +188,7 @@ public class PlayerMover : MonoBehaviour
         player.isMoving = false;
         player.movementCoroutine = null;
 
-        _cameraSwitch.SwitchToPlayerCamera(currentPlayerIndex);          
+        _cameraSwitch.SwitchToPlayerCamera(playerIndex);          
     }
 
     private IEnumerator AnimateMoveToPosition(Player player, Vector3 targetPos)
