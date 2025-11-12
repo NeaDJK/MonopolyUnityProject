@@ -96,6 +96,8 @@ public class PlayerMover : MonoBehaviour
 
         _gameManager.players[currentPlayerIndex].movementCoroutine = StartCoroutine(MovePlayerCoroutine(currentPlayerIndex));
 
+        //EventManager.UpdateGameEvent(diceResult);
+
         OnDiceRolled?.Invoke();
     }
 

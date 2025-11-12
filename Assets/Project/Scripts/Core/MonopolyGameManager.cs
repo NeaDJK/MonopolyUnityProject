@@ -146,7 +146,7 @@ public class MonopolyGameManager : MonoBehaviour
 
     public void LogEvent(string message)
     {
-        OnGameEvent?.Invoke(message);
+        EventManager.UpdateGameEvent(message);
         Debug.Log(message);
     }
 

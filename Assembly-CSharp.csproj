@@ -68,6 +68,7 @@
     <Compile Include="Assets\Project\Scripts\Cells\MonopolyCell.cs" />
     <Compile Include="Assets\Project\Scripts\UI\CellInfoUI.cs" />
     <Compile Include="Assets\Project\Scripts\Core\CameraSwitch.cs" />
+    <Compile Include="Assets\Project\Scripts\UI\PopUpInfoManager.cs" />
     <Compile Include="Assets\Project\Scripts\UI\EventLoggerUI.cs" />
     <Compile Include="Assets\Project\Scripts\Core\MonopolyGameManager.cs" />
     <Compile Include="Assets\Project\Scripts\UI\PlayerStatusUI.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Project\Scripts\UI\HelpMenuManager.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\JailCell.cs" />
     <Compile Include="Assets\Project\Scripts\Core\PlayerMover.cs" />
+    <Compile Include="Assets\Project\Scripts\Core\EventManager.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\TransportCell.cs" />
   </ItemGroup>
   <ItemGroup>
