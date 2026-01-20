@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     {
         money -= amount;
         if (money < 0) 
-            Debug.Log($"{playerName} ������������!");
+            Debug.Log($"{playerName} заплатил {amount}!");
     }
 
     public void GoToJail()
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         isInJail = true;
         turnsInJail = 3;
 
-        MonopolyGameManager.Instance.LogEvent($"{playerName} ��������� � ������!");
+        MonopolyGameManager.Instance.LogEvent($"{playerName} отправляется в тюрьму!");
     }
 
     public void HandleJailedPlayer()
@@ -49,11 +49,11 @@ public class Player : MonoBehaviour
         if (turnsInJail <= 0)
         {
             isInJail = false;
-            MonopolyGameManager.Instance.LogEvent($"{playerName} ������� �� ������");
+            MonopolyGameManager.Instance.LogEvent($"{playerName} выходит из тюрьмы.");
         }
         else
         {
-            MonopolyGameManager.Instance.LogEvent($"�������� ����� � ������: {turnsInJail}");
+            MonopolyGameManager.Instance.LogEvent($"Осталось ходов в тюрьме: {turnsInJail}");
         }
     }
 }

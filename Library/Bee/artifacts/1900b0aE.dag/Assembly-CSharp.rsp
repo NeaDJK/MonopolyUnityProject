@@ -367,6 +367,7 @@
 "Assets/Project/Scripts/UI/CellInfoUI.cs"
 "Assets/Project/Scripts/UI/EventLoggerUI.cs"
 "Assets/Project/Scripts/UI/HelpMenuManager.cs"
+"Assets/Project/Scripts/UI/MainInterface.cs"
 "Assets/Project/Scripts/UI/PanelMenuManager.cs"
 "Assets/Project/Scripts/UI/PlayerStatusUI.cs"
 "Assets/Project/Scripts/UI/PopUpInfoManager.cs"

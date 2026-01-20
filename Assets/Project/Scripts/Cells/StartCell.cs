@@ -9,6 +9,6 @@ public class StartCell : MonopolyCell
     public override void OnPlayerLand(Player player)
     {
         //player.AddMoney(startMoney);
-        MonopolyGameManager.Instance.LogEvent($"{player.playerName} находится на клетке старта.");
+        MonopolyGameManager.Instance.LogEvent($"{player.playerName} РЅР°С…РѕРґРёС‚СЃСЏ РЅР° РєР»РµС‚РєРµ СЃС‚Р°СЂС‚Р°.");
     }
 }

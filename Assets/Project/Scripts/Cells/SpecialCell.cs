@@ -9,18 +9,18 @@ public class SpecialCell : MonopolyCell
 
     private List<string> chanceEvents = new List<string>
     {
-        "Оплатите ремонт домов - $150",
-        "Получите наследство $100",
-        "Штраф за превышение скорости $15"
+        "РћРїР»Р°С‚РёС‚Рµ СЂРµРјРѕРЅС‚ РґРѕРјРѕРІ - $150",
+        "РџРѕР»СѓС‡РёС‚Рµ РЅР°СЃР»РµРґСЃС‚РІРѕ $100",
+        "РЁС‚СЂР°С„ Р·Р° РїСЂРµРІС‹С€РµРЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё $15"
     };
 
     private List<string> communityChestEvents = new List<string>
     {
-        "Банковская ошибка в вашу пользу. Получите $200",
-        "Оплатите обучение $50",
-        "Получите доход от инвестиций $100",
-        "Выиграли в лотерею! Получите $50",
-        "Оплатите больничные счета $100"
+        "Р‘Р°РЅРєРѕРІСЃРєР°СЏ РѕС€РёР±РєР° РІ РІР°С€Сѓ РїРѕР»СЊР·Сѓ. РџРѕР»СѓС‡РёС‚Рµ $200",
+        "РћРїР»Р°С‚РёС‚Рµ РѕР±СѓС‡РµРЅРёРµ $50",
+        "РџРѕР»СѓС‡РёС‚Рµ РґРѕС…РѕРґ РѕС‚ РёРЅРІРµСЃС‚РёС†РёР№ $100",
+        "Р’С‹РёРіСЂР°Р»Рё РІ Р»РѕС‚РµСЂРµСЋ! РџРѕР»СѓС‡РёС‚Рµ $50",
+        "РћРїР»Р°С‚РёС‚Рµ Р±РѕР»СЊРЅРёС‡РЅС‹Рµ СЃС‡РµС‚Р° $100"
     };
 
     public override void OnPlayerLand(Player player)
@@ -37,21 +37,25 @@ public class SpecialCell : MonopolyCell
 
     private void HandleEvent(Player player, string eventText)
     {
-        MonopolyGameManager.Instance.LogEvent($"{player.playerName} на клетке {cellName}: {eventText}");
+        MonopolyGameManager.Instance.LogEvent($"{player.playerName} РЅР° РєР»РµС‚РєРµ {cellName}: {eventText}");
 
-        if (eventText.Contains("Получите"))
+        if (eventText.Contains("РџРѕР»СѓС‡РёС‚Рµ"))
         {
             int amount = ExtractAmount(eventText);
-            if (amount > 0) player.AddMoney(amount);
+            if (amount > 0)
+            { 
+                player.AddMoney(amount);
+                MainInterface.Instance.UpdateBalance(player.money);
+            }
         }
-        else if (eventText.Contains("Оплатите"))
+        else if (eventText.Contains("РћРїР»Р°С‚РёС‚Рµ"))
         {
             int amount = ExtractAmount(eventText);
-            if (amount > 0) player.PayMoney(amount);
-        }
-        else if (eventText.Contains("тюрьму"))
-        {
-            player.GoToJail();
+            if (amount > 0) 
+            {
+                player.PayMoney(amount);
+                MainInterface.Instance.UpdateBalance(player.money);
+            }
         }
     }
 

@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerMover : MonoBehaviour
 {
@@ -72,10 +70,10 @@ public class PlayerMover : MonoBehaviour
         }
 
         if (waitingForDiceRoll && !AnyPlayerMoving() && _gameManager.isGameInitialized && player.countOfSteps > 0)
-            RollDice();
+            StartCoroutine(RollDice());
     }
 
-    private void RollDice()
+    private IEnumerator RollDice()
     {
         int dice1 = UnityEngine.Random.Range(1, 7);
         int dice2 = UnityEngine.Random.Range(1, 7);
@@ -86,7 +84,9 @@ public class PlayerMover : MonoBehaviour
             _gameManager.players[currentPlayerIndex].countOfSteps++;
         }
 
-        Debug.Log($"{_gameManager.players[currentPlayerIndex].playerName} rolled {dice1}+{dice2}={diceResult}");
+        _gameManager.LogEvent($"Игроку {_gameManager.players[currentPlayerIndex].playerName} выпало {dice1}+{dice2}={diceResult}");
+
+        yield return new WaitForSeconds(1);
 
         stepsRemaining = diceResult;
         waitingForDiceRoll = false;
@@ -99,6 +99,7 @@ public class PlayerMover : MonoBehaviour
         //EventManager.UpdateGameEvent(diceResult);
 
         OnDiceRolled?.Invoke();
+        yield break;
     }
 
     public void EndTurn()
@@ -110,11 +111,13 @@ public class PlayerMover : MonoBehaviour
         {
             _gameManager.players[currentPlayerIndex].countOfSteps = Player.defaultCountOfStep;
             currentPlayerIndex = (currentPlayerIndex + 1) % _gameManager.players.Length;
+            MainInterface.Instance.UpdateBalance(_gameManager.players[currentPlayerIndex].money);
+            MainInterface.Instance.UpdatePlayerName(_gameManager.players[currentPlayerIndex].playerName);
         }
         
         else
         {            
-            Debug.Log($"Еще ходов: {_gameManager.players[currentPlayerIndex].countOfSteps}");
+            _gameManager.LogEvent($"Еще ходов: {_gameManager.players[currentPlayerIndex].countOfSteps}");
         }
     }
 
@@ -167,7 +170,7 @@ public class PlayerMover : MonoBehaviour
                 player.AddMoney(StartCell.startMoney);
 
                 _playerStatusUI.UpdateStatus();
-                _gameManager.LogEvent($"{player.playerName} ������� $200 �� ������ ����� �����");
+                _gameManager.LogEvent($"{player.playerName} получает $200 за проход круга!");
             }
 
             if (Array.IndexOf(_gameManager.cornerCellIndices, nextPos) >= 0)
@@ -190,7 +193,8 @@ public class PlayerMover : MonoBehaviour
         player.isMoving = false;
         player.movementCoroutine = null;
 
-        _cameraSwitch.SwitchToPlayerCamera(playerIndex);          
+        _cameraSwitch.SwitchToPlayerCamera(playerIndex);
+        _gameManager.ProcessCell(player.currentPosition, player);          
     }
 
     private IEnumerator AnimateMoveToPosition(Player player, Vector3 targetPos)

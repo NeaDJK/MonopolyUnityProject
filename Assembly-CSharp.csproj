@@ -59,7 +59,7 @@
     <UnityVersion>2021.3.45f2</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\nikit\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\nikit\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Project\Scripts\Player\Player.cs" />
@@ -75,6 +75,7 @@
     <Compile Include="Assets\Project\Scripts\UI\PanelMenuManager.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\ParkingCell.cs" />
     <Compile Include="Assets\Project\Scripts\Inventory\InventoryManager.cs" />
+    <Compile Include="Assets\Project\Scripts\UI\MainInterface.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\Cell.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\PropertyCell.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\TaxCell.cs" />

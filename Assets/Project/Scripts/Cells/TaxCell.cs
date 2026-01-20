@@ -9,6 +9,7 @@ public class TaxCell : MonopolyCell
     public override void OnPlayerLand(Player player)
     {
         player.PayMoney(taxMoney);
-        MonopolyGameManager.Instance.LogEvent($"{player.playerName} оплатил штраф в размере ${taxMoney}!");
+        MonopolyGameManager.Instance.LogEvent($"{player.playerName} РїР»Р°С‚РёС‚ РЅР°Р»РѕРі РІ СЂР°Р·РјРµСЂРµ ${taxMoney}!");
+        MainInterface.Instance.UpdateBalance(player.money);
     }
 }

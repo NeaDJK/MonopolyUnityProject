@@ -1,26 +1,32 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - CameraSwitch
     - CellInfoUI
     - EventLoggerUI
     - HelpMenuManager
+    - InventoryManager
     - JailCell
+    - MainInterface
     - MonopolyGameManager
+    - PanelMenuManager
     - ParkingCell
+    - Player
+    - PlayerMover
     - PlayerStatusUI
+    - PopUpInfoManager
     - PropertyCell
     - SpecialCell
     - StartCell
     - TaxCell
     - TransportCell
     Cinemachine.dll:
+    - Cinemachine.CinemachineBlenderSettings
     - Cinemachine.CinemachineBrain
     - Cinemachine.CinemachineComposer
     - Cinemachine.CinemachinePipeline
     - Cinemachine.CinemachineTransposer
     - Cinemachine.CinemachineVirtualCamera
-    Unity.PlasticSCM.Editor.dll:
-    - Unity.PlasticSCM.Editor.PlasticWindow
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -39,12 +45,14 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.GridLayoutGroup
+    - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.VerticalLayoutGroup
   serializedClasses:
-    Assembly-CSharp:
-    - MonopolyGameManager/Player
     Cinemachine:
     - Cinemachine.CinemachineBlendDefinition
+    - Cinemachine.CinemachineBlenderSettings/CustomBlend
     - Cinemachine.CinemachineBrain/BrainEvent
     - Cinemachine.CinemachineBrain/VcamActivatedEvent
     - Cinemachine.CinemachineVirtualCameraBase/TransitionParams
@@ -68,6 +76,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
     - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.RectOffset
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
@@ -85,8 +94,17 @@ ScriptsOnlyBuild:
     fullTypeName: HelpMenuManager
     methodName: VoidHelpMenu
   - assembly: Assembly-CSharp
+    fullTypeName: PanelMenuManager
+    methodName: SwitchToPanel
+  - assembly: Assembly-CSharp
     fullTypeName: HelpMenuManager
     methodName: CloseHelpMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: PanelMenuManager
+    methodName: SwitchToPanel
+  - assembly: Assembly-CSharp
+    fullTypeName: PanelMenuManager
+    methodName: SwitchToPanel
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -120,63 +138,83 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 0}
+      Script: {instanceID: 16082}
     - Class: 114
-      Script: {instanceID: 16124}
+      Script: {instanceID: 16126}
     - Class: 114
-      Script: {instanceID: 16512}
+      Script: {instanceID: 16160}
     - Class: 114
-      Script: {instanceID: 16742}
+      Script: {instanceID: 16516}
     - Class: 114
-      Script: {instanceID: 17048}
+      Script: {instanceID: 16676}
     - Class: 114
-      Script: {instanceID: 17106}
+      Script: {instanceID: 16746}
     - Class: 114
-      Script: {instanceID: 17172}
+      Script: {instanceID: 17052}
     - Class: 114
-      Script: {instanceID: 17238}
+      Script: {instanceID: 17110}
     - Class: 114
-      Script: {instanceID: 17380}
+      Script: {instanceID: 17176}
     - Class: 114
-      Script: {instanceID: 17404}
+      Script: {instanceID: 17242}
     - Class: 114
-      Script: {instanceID: 17682}
+      Script: {instanceID: 17384}
     - Class: 114
-      Script: {instanceID: 18688}
+      Script: {instanceID: 17408}
+    - Class: 114
+      Script: {instanceID: 17686}
+    - Class: 114
+      Script: {instanceID: 18094}
+    - Class: 114
+      Script: {instanceID: 18304}
     - Class: 114
       Script: {instanceID: 18696}
     - Class: 114
-      Script: {instanceID: 18722}
+      Script: {instanceID: 18704}
     - Class: 114
-      Script: {instanceID: 18940}
+      Script: {instanceID: 18730}
     - Class: 114
-      Script: {instanceID: 18966}
+      Script: {instanceID: 18948}
     - Class: 114
-      Script: {instanceID: 19342}
+      Script: {instanceID: 18974}
     - Class: 114
-      Script: {instanceID: 19480}
+      Script: {instanceID: 19350}
     - Class: 114
-      Script: {instanceID: 19694}
+      Script: {instanceID: 19374}
     - Class: 114
-      Script: {instanceID: 20232}
+      Script: {instanceID: 19440}
     - Class: 114
-      Script: {instanceID: 20262}
+      Script: {instanceID: 19490}
     - Class: 114
-      Script: {instanceID: 20436}
+      Script: {instanceID: 19592}
     - Class: 114
-      Script: {instanceID: 20542}
+      Script: {instanceID: 19644}
     - Class: 114
-      Script: {instanceID: 20756}
+      Script: {instanceID: 19706}
     - Class: 114
-      Script: {instanceID: 21442}
+      Script: {instanceID: 19856}
     - Class: 114
-      Script: {instanceID: 21644}
+      Script: {instanceID: 20248}
     - Class: 114
-      Script: {instanceID: 21948}
+      Script: {instanceID: 20450}
     - Class: 114
-      Script: {instanceID: 22244}
+      Script: {instanceID: 20556}
     - Class: 114
-      Script: {instanceID: 22516}
+      Script: {instanceID: 20770}
+    - Class: 114
+      Script: {instanceID: 21190}
+    - Class: 114
+      Script: {instanceID: 21456}
+    - Class: 114
+      Script: {instanceID: 21658}
+    - Class: 114
+      Script: {instanceID: 21962}
+    - Class: 114
+      Script: {instanceID: 22258}
+    - Class: 114
+      Script: {instanceID: 22298}
+    - Class: 114
+      Script: {instanceID: 22534}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -196,6 +234,12 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: 7bcb35908a60cac26edee0ff51816ada
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: CanvasScaler
+  - hash:
+      serializedVersion: 2
       Hash: c1058004017c4d95e55a1c77d955e000
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UIElements
@@ -206,6 +250,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 6e1b82522ec097ac68675fc9d462bfe2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Player
   - hash:
       serializedVersion: 2
       Hash: 719a1390f9eb856966a1aaab72041631
@@ -334,7 +384,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: dca2c0772f063b8db7b17f9a79ea2f3d
+      Hash: 7fd1c20ca7b47bf210c04779fb10d915
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StartCell
@@ -580,6 +630,12 @@ ScriptsOnlyBuild:
     className: UnityOnControllerColliderHitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: bb657db10680edc982dbd06c89d0984c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraSwitch
+  - hash:
+      serializedVersion: 2
       Hash: 4fe30b079bc8419c58089caa901d9184
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -608,6 +664,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Flow.dll
     namespaceName: Unity.VisualScripting
     className: ScriptGraphAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 8bdfd13ef8afc362ab67eed675ba9d36
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PopUpInfoManager
   - hash:
       serializedVersion: 2
       Hash: 3c3e5980c88a14a86741564a7fd08aaa
@@ -712,7 +774,7 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreak2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 245e58b089b4022b9665571c33483e3d
+      Hash: 5f5e464a256c5941e31ac3b008e126e2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MonopolyGameManager
@@ -826,6 +888,12 @@ ScriptsOnlyBuild:
     className: UnityOnEndDragMessageListener
   - hash:
       serializedVersion: 2
+      Hash: e17501bf236647c8a917ea18a629ba4a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PanelMenuManager
+  - hash:
+      serializedVersion: 2
       Hash: f3af0e0f637016253c40351a71eac6ba
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -866,6 +934,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Toggle
+  - hash:
+      serializedVersion: 2
+      Hash: 140b853a28ea13a7f344a0741d3e52d9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InventoryManager
   - hash:
       serializedVersion: 2
       Hash: 9efc8c65b86b5c1022ed3efd7ac004a8
@@ -910,6 +984,12 @@ ScriptsOnlyBuild:
     className: PanelEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 8fe3ada3109723bea2a43fe308580381
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainInterface
+  - hash:
+      serializedVersion: 2
       Hash: 2be854dee95084c1537e4d6bb482ca5d
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -934,6 +1014,12 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
+      Hash: 89089dddba574c5af143b8ae02615da0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Cell
+  - hash:
+      serializedVersion: 2
       Hash: 8de12aca8b8cb30fa29dfedb5a701e0e
     assemblyName: Unity.VisualScripting.State.dll
     namespaceName: Unity.VisualScripting
@@ -956,12 +1042,6 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineBrain
-  - hash:
-      serializedVersion: 2
-      Hash: 7bcb35908a60cac26edee0ff51816ada
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: CanvasScaler
   - hash:
       serializedVersion: 2
       Hash: 15e2174438103ba23087ee5cc6c0e351
@@ -1006,7 +1086,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: b0509b490d47792091618c6695db27a6
+      Hash: de444ea97a60520273bb67b66b6ff607
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PropertyCell
@@ -1288,10 +1368,22 @@ ScriptsOnlyBuild:
     className: CinemachineRecomposer
   - hash:
       serializedVersion: 2
+      Hash: 46e387b65e283ace3ab3fbe408c45d50
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerMover
+  - hash:
+      serializedVersion: 2
       Hash: 31d0d66962989f5f311b2a1d2ed736c4
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineBasicMultiChannelPerlin
+  - hash:
+      serializedVersion: 2
+      Hash: cfa174ea8d68263145cd021e90cd8eb2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EventManager
   - hash:
       serializedVersion: 2
       Hash: af3c7bb5f1a72685c8bff2aeb7ca8d1b
@@ -1318,7 +1410,7 @@ ScriptsOnlyBuild:
     className: CinemachineFollowZoom
   - hash:
       serializedVersion: 2
-      Hash: 94e5cdf1862042c726fcbe1e2b4a41c2
+      Hash: 6a905a3be893f776eed2f17d214de9ca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TransportCell
@@ -1337,4 +1429,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Nik/Desktop/Monopoly/Monopoly.exe
+  playerPath: "C:/Users/nikit/Desktop/\u0420\u044B\u0440/Monopoly.exe"

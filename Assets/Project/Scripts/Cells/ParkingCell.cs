@@ -6,6 +6,6 @@ public class ParkingCell : MonopolyCell
 {
     public override void OnPlayerLand(Player player)
     {
-        MonopolyGameManager.Instance.LogEvent($"{player.playerName} остановился на парковке.");
+        MonopolyGameManager.Instance.LogEvent($"{player.playerName} РѕСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РЅР° РїР°СЂРєРѕРІРєРµ.");
     }
 }

@@ -32,16 +32,20 @@ public class MonopolyGameManager : MonoBehaviour
     private PropertyCell currentProperty = new PropertyCell();
     private TransportCell currentTransport;
     private PlayerMover _playerMover;
-
     private CameraSwitch _cameraSwitch;
+    [SerializeField] private MainInterface _mainInterface;
 
     private void Awake()
     {
+        
+
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
             InitializePlayers();
+            _mainInterface.UpdateBalance(players[0].money);
+            _mainInterface.UpdatePlayerName(players[0].playerName);
             isGameInitialized = true;
 
             //_cameraSwitch = CameraSwitch.Instance;
@@ -73,6 +77,25 @@ public class MonopolyGameManager : MonoBehaviour
         {
             _cameraSwitch = CameraSwitch.Instance;
         }
+
+        if (_mainInterface == null)
+        {
+            _mainInterface = MainInterface.Instance;
+        }
+        // if (_playerMover == null)
+        // {
+        //     _playerMover = PlayerMover.Instance;
+        // }
+
+        // if (_cameraSwitch == null)
+        // {
+        //     _cameraSwitch = CameraSwitch.Instance;
+        // }
+
+        // if (_mainInterface == null)
+        // {
+        //     _mainInterface = MainInterface.Instance;
+        // }
     }
 
     private void Update()
@@ -90,7 +113,7 @@ public class MonopolyGameManager : MonoBehaviour
                 Player player = players[_playerMover.currentPlayerIndex];
 
                 _playerMover.Move();
-                ProcessCell(player.currentPosition, player);
+                
 
                 OnPlayerMoved?.Invoke(player);                
             }
@@ -154,7 +177,7 @@ public class MonopolyGameManager : MonoBehaviour
 
     public Player GetCurrentPlayer() => players[_playerMover.currentPlayerIndex];
 
-    private void ProcessCell(int cellIndex, Player player)
+    public void ProcessCell(int cellIndex, Player player)
     {
         currentProperty = null;
         currentTransport = null;

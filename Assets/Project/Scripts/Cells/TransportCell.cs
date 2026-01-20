@@ -30,11 +30,11 @@ public class TransportCell : MonopolyCell
     {
         if (owner == null)
         {
-            MonopolyGameManager.Instance.LogEvent($"{player.playerName} может купить {cellName} за ${purchasePrice}");
+            MonopolyGameManager.Instance.LogEvent($"{player.playerName} РјРѕР¶РµС‚ РєСѓРїРёС‚СЊ {cellName} Р·Р° ${purchasePrice}");
         }
         else
         {
-            MonopolyGameManager.Instance.LogEvent("Игрок на своей клетке или клетка в залоге");
+            MonopolyGameManager.Instance.LogEvent($"РљР»РµС‚РєР° РїСЂРёРЅР°РґР»РµР¶РёС‚ РґСЂСѓРіРѕРјСѓ РёРіСЂРѕРєСѓ: {owner.playerName}");
         }
     }
 
@@ -43,9 +43,10 @@ public class TransportCell : MonopolyCell
         int transportCount = owner.ownedTransports.Count;
         int rent = rentPrices[Mathf.Clamp(transportCount - 1, 0, rentPrices.Length - 1)];
 
-        MonopolyGameManager.Instance.LogEvent($"{player.playerName} платит за транспорт {owner.playerName}: ${rent}");
+        MonopolyGameManager.Instance.LogEvent($"{player.playerName} РїР»Р°С‚РёС‚ Р°СЂРµРЅРґСѓ {owner.playerName}: ${rent}");
         player.PayMoney(rent);
         owner.AddMoney(rent);
+        MainInterface.Instance.UpdateBalance(player.money);
     }
 
     public void TryPurchase(Player buyer)
@@ -55,7 +56,8 @@ public class TransportCell : MonopolyCell
             buyer.PayMoney(purchasePrice);
             owner = buyer;
             buyer.ownedTransports.Add(this);
-            MonopolyGameManager.Instance.LogEvent($"{buyer.playerName} купил {cellName}!");
+            MonopolyGameManager.Instance.LogEvent($"{buyer.playerName} РєСѓРїРёР» {cellName}!");
+            MainInterface.Instance.UpdateBalance(buyer.money);
         }
     }
 }

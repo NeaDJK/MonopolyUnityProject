@@ -21,18 +21,17 @@ public class PropertyCell : MonopolyCell
 
     public override void OnPlayerLand(Player player)
     {
-        Debug.Log($"[{cellName}] Статус: {(owner == null ? "Свободна" : "Принадлежит " + owner.playerName)}");
 
         if (owner == null)
         {
+            //Debug.Log($"[{cellName}] Статус: {(owner == null ? "Свободна" : "Принадлежит " + owner.playerName)}");
             HandleUnownedCell(player);
-            MonopolyGameManager.Instance.LogEvent($"{player.playerName} может купить {cellName} за ${purchasePrice}");
+            //MonopolyGameManager.Instance.LogEvent($"{player.playerName} может купить {cellName} за ${purchasePrice}");
         }
         else if (owner != player && !isMortgaged)
         {
             HandleRentPayment(player);
-            int rent = CalculateRent();
-            MonopolyGameManager.Instance.LogEvent($"{player.playerName} → {owner.playerName}: аренда {cellName} ${rent}");
+            //MonopolyGameManager.Instance.LogEvent($"{player.playerName} → {owner.playerName}: аренда {cellName} ${rent}");
         }
         else
         {
@@ -43,8 +42,8 @@ public class PropertyCell : MonopolyCell
     private void HandleUnownedCell(Player player)
     {
         isActiveForPurchase = true;
-        ShowPurchaseInfo(player);
-        MonopolyGameManager.Instance.LogEvent($"Клетка {cellName} доступна для покупки");
+        //ShowPurchaseInfo(player);
+        MonopolyGameManager.Instance.LogEvent($"[{cellName}] Статус: {(owner == null ? $"Можно купить за ${purchasePrice}" : "Принадлежит " + owner.playerName)}");
     }
 
     private void HandleRentPayment(Player player)
@@ -53,15 +52,16 @@ public class PropertyCell : MonopolyCell
         MonopolyGameManager.Instance.LogEvent($"{player.playerName} платит аренду {owner.playerName}: ${rent}");
         player.PayMoney(rent);
         owner.AddMoney(rent);
+        MainInterface.Instance.UpdateBalance(player.money);
     }
 
-    private void ShowPurchaseInfo(Player player)
-    {
-        string info = $"[{cellName}]\nЦена: ${purchasePrice}\nАренда: ${rentPrices[0]}";
-        if (rentPrices.Length > 1) info += $" (до ${rentPrices[^1]})";
-        info += $"\nБаланс игрока: ${player.money}\nНажмите E для покупки";
-        MonopolyGameManager.Instance.LogEvent(info);
-    }
+    // private void ShowPurchaseInfo(Player player)
+    // {
+    //     string info = $"[{cellName}]\nЦена: ${purchasePrice}\nАренда: ${rentPrices[0]}";
+    //     if (rentPrices.Length > 1) info += $" (до ${rentPrices[^1]})";
+    //     info += $"\nБаланс игрока: ${player.money}\nНажмите E для покупки";
+    //     MonopolyGameManager.Instance.LogEvent(info);
+    // }
 
     public void TryPurchase(Player buyer)
     {
@@ -89,6 +89,7 @@ public class PropertyCell : MonopolyCell
         
         MonopolyGameManager.Instance.LogEvent($"[ПОКУПКА] {buyer.playerName} стал владельцем {cellName}");
         MonopolyGameManager.Instance.LogEvent($"Новый баланс: ${buyer.money}");
+        MainInterface.Instance.UpdateBalance(buyer.money);
     }
 
     private int CalculateRent()
