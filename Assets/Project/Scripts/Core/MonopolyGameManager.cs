@@ -5,6 +5,7 @@ using System;
 using static MonopolyGameManager;
 using System.Linq;
 using Cinemachine;
+using TMPro;
 
 public class MonopolyGameManager : MonoBehaviour
 {
@@ -34,11 +35,12 @@ public class MonopolyGameManager : MonoBehaviour
     private PlayerMover _playerMover;
     private CameraSwitch _cameraSwitch;
     [SerializeField] private MainInterface _mainInterface;
+    [SerializeField] private Credit _credit;
+    [SerializeField] private List<TMP_Text> _creditPlansText;
+    [SerializeField] private TMP_Text _creditInfoText;
 
     private void Awake()
     {
-        
-
         if (Instance == null)
         {
             Instance = this;
@@ -96,6 +98,7 @@ public class MonopolyGameManager : MonoBehaviour
         // {
         //     _mainInterface = MainInterface.Instance;
         // }
+
     }
 
     private void Update()
@@ -111,6 +114,20 @@ public class MonopolyGameManager : MonoBehaviour
             if (_cameraSwitch._currentCamera == _cameraSwitch._mainViewCam)
             {
                 Player player = players[_playerMover.currentPlayerIndex];
+
+                if (!player.isHaveCredit)
+            {
+                for (int i = 0; i < 3; i++)                
+                {
+                    _credit.NewCredit();
+                    _creditPlansText[i].text += _credit.GetCreditInfo();
+                }                        
+            }  
+            
+            else
+            {
+                _creditInfoText.text = $"У игрока {player.playerName} уже есть активный кредит!";                
+            }
 
                 _playerMover.Move();
                 
@@ -164,6 +181,12 @@ public class MonopolyGameManager : MonoBehaviour
                     _cameraSwitch.ClosePanelMenu();
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+
+            
         }
     }
 

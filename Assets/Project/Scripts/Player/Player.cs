@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public string playerName;
     public int money = 1500;
     public bool isInJail;
+    public bool isHaveCredit;
     public int turnsInJail;
     public const int defaultCountOfStep = 1;
     public int countOfSteps = defaultCountOfStep;
