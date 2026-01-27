@@ -10,20 +10,8 @@ public class Credit : MonoBehaviour
     private int _percent;            // Процент
     private double _coefPercent;     // Коэффициент
     private int _typeOfCredit;       // Тип кредита
-    private double _payment;         // Платеж
+    private int _payment;         // Платеж
     private int _currentCircle;      // Текущий круг
-
-    // Конструктор
-    public Credit()
-    {
-        _sum = 0;
-        _countOfSteps = 0;
-        _percent = 0;
-        _coefPercent = 1;
-        _typeOfCredit = 0;
-        _payment = 0;
-        _currentCircle = 0;
-    }
     
     // Проверка на закрытие кредита
     public void EndCredit()
@@ -75,13 +63,13 @@ public class Credit : MonoBehaviour
         {
             if (_typeOfCredit == 0) // Аннуитетный платеж
             {
-                _payment = _sum * Pow(_coefPercent, _countOfSteps) * (_coefPercent - 1) / (Pow(_coefPercent, _countOfSteps) - 1);
+                _payment = (int) (_sum * Pow(_coefPercent, _countOfSteps) * (_coefPercent - 1) / (Pow(_coefPercent, _countOfSteps) - 1));
             }
             else // Дифференцированный платеж
             {
                 if ((i <= _countOfSteps) && (i > 0))
                 {
-                    _payment = _sum * 1.0 / _countOfSteps * (_coefPercent * (_countOfSteps - i + 1) - (_countOfSteps - i));
+                    _payment = (int) (_sum * 1.0 / _countOfSteps * (_coefPercent * (_countOfSteps - i + 1) - (_countOfSteps - i)));
                 }
                 else
                 {
@@ -92,14 +80,14 @@ public class Credit : MonoBehaviour
     }
 
     // Получение текущего платежа за круг
-    public double GetCurrentPaymentForCircle()
+    public int GetCurrentPaymentForCircle()
     {
         CalculateCurrentPayment(_currentCircle);
         return _payment;
     }
 
     // Вывод информации по кредиту
-    public string GetCreditInfo(int num = -1)
+    public string GetCreditInfo_ToString(int num = -1)
     {
         string info = "";
 
@@ -141,6 +129,24 @@ public class Credit : MonoBehaviour
         }
 
         return info;
+    }
+
+    public Credit GetCreditInfo_ToCredit()
+    {
+        // Создаем новый объект Credit
+        Credit cr = new Credit();
+        
+        // Копируем все поля из текущего объекта
+        cr._sum = this._sum;
+        cr._countOfSteps = this._countOfSteps;
+        cr._percent = this._percent;
+        cr._coefPercent = this._coefPercent;
+        cr._typeOfCredit = this._typeOfCredit;
+        
+        // Расчет текущего платежа для копии
+        cr.CalculateCurrentPayment(cr._currentCircle);
+        
+        return cr;
     }
 
     // Добавление текущего круга

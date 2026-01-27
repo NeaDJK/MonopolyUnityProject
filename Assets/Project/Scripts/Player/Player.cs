@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector3 offsetPosition;
     [HideInInspector] public Quaternion targetRotation;
     [HideInInspector] public Coroutine movementCoroutine;
+    [HideInInspector] public Credit activeCredit;
 
     public void AddMoney(int amount) => money += amount;
 
@@ -56,5 +57,18 @@ public class Player : MonoBehaviour
         {
             MonopolyGameManager.Instance.LogEvent($"Осталось ходов в тюрьме: {turnsInJail}");
         }
+    }    
+
+    public void PayCredit()
+    {
+        // Выплата за текущий круг
+        int payment = activeCredit.GetCurrentPaymentForCircle();
+        PayMoney(payment);
+        
+        // Увеличиваем текущий круг
+        activeCredit.AddCurrentCircle(1);
+        
+        // Проверяем, не закрыт ли кредит
+        activeCredit.EndCredit();
     }
 }

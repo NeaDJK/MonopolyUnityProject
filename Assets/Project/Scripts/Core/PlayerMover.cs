@@ -171,6 +171,11 @@ public class PlayerMover : MonoBehaviour
 
                 _playerStatusUI.UpdateStatus();
                 _gameManager.LogEvent($"{player.playerName} получает $200 за проход круга!");
+
+                if (player.isHaveCredit)
+                {
+                    player.PayCredit();
+                }
             }
 
             if (Array.IndexOf(_gameManager.cornerCellIndices, nextPos) >= 0)

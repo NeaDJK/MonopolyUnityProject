@@ -77,7 +77,6 @@
     <Compile Include="Assets\Project\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Project\Scripts\UI\MainInterface.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\Cell.cs" />
-    <Compile Include="Assets\Project\Scripts\Cells\BankCell.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\PropertyCell.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\TaxCell.cs" />
     <Compile Include="Assets\Project\Scripts\Core\Credit.cs" />

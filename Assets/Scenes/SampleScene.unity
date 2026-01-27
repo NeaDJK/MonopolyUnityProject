@@ -1417,6 +1417,7 @@ MonoBehaviour:
   ownedProperties: []
   offsetPosition: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  activeCredit: {fileID: 0}
 --- !u!4 &168893942 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7557341987510661883, guid: 7d0ca22a25de48846b0e118e1b6b5057, type: 3}
@@ -2702,12 +2703,17 @@ MonoBehaviour:
   playerBaseHeight: 0.4
   isGameInitialized: 0
   _mainInterface: {fileID: 1403880029}
-  _credit: {fileID: 1604794549}
-  _creditPlansText:
-  - {fileID: 1731771735}
-  - {fileID: 561684984}
-  - {fileID: 1000505648}
-  _creditInfoText: {fileID: 2083207682}
+  _credit: {fileID: 3387655499110384951}
+  _creditPlan_1: {fileID: 3387655499110384951}
+  _creditPlan_2: {fileID: 3387655499110384951}
+  _creditPlan_3: {fileID: 3387655499110384951}
+  _creditPlansText_1: {fileID: 1731771735}
+  _creditPlansText_2: {fileID: 561684984}
+  _creditPlansText_3: {fileID: 1000505648}
+  _creditPlansButton_1: {fileID: 922801730}
+  _creditPlansButton_2: {fileID: 2066492875}
+  _creditPlansButton_3: {fileID: 550416363}
+  _creditInfoText: {fileID: 1289915658}
 --- !u!1 &297663618
 GameObject:
   m_ObjectHideFlags: 0
@@ -4988,12 +4994,12 @@ GameObject:
   - component: {fileID: 550416364}
   - component: {fileID: 550416363}
   m_Layer: 5
-  m_Name: CrediPlanButton_3
+  m_Name: CreditPlanButton_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &550416362
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5058,7 +5064,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 550416364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 292172378}
+        m_TargetAssemblyTypeName: MonopolyGameManager, Assembly-CSharp
+        m_MethodName: TakeCredit_3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &550416364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5214,7 +5232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &559188624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5276,7 +5294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &561684982
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7707,6 +7725,7 @@ MonoBehaviour:
   ownedProperties: []
   offsetPosition: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  activeCredit: {fileID: 0}
 --- !u!4 &874824950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 466848570732779742, guid: 9797bd000b9cdf841ab4ac9f3cb9183e, type: 3}
@@ -7758,12 +7777,12 @@ GameObject:
   - component: {fileID: 922801731}
   - component: {fileID: 922801730}
   m_Layer: 5
-  m_Name: CrediPlanButton_1
+  m_Name: CreditPlanButton_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &922801729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7828,7 +7847,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 922801731}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 292172378}
+        m_TargetAssemblyTypeName: MonopolyGameManager, Assembly-CSharp
+        m_MethodName: TakeCredit_1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &922801731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8535,7 +8566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1000505646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9292,7 +9323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1089247236
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9311,6 +9342,7 @@ RectTransform:
   - {fileID: 922801729}
   - {fileID: 2066492874}
   - {fileID: 550416362}
+  - {fileID: 1289915660}
   m_Father: {fileID: 740372037}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9352,6 +9384,7 @@ MonoBehaviour:
   ownedProperties: []
   offsetPosition: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  activeCredit: {fileID: 0}
 --- !u!4 &1094168276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7084220933333534004, guid: ec9d735971d3813409aa296a51557163, type: 3}
@@ -11452,6 +11485,141 @@ MonoBehaviour:
   housesBuilt: 0
   isMortgaged: 0
   isActiveForPurchase: 0
+--- !u!1 &1289915657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1289915660}
+  - component: {fileID: 1289915659}
+  - component: {fileID: 1289915658}
+  m_Layer: 5
+  m_Name: CreditInfoText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1289915658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289915657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: f36d078a4b4bb2e4988488f32aeb23d5, type: 2}
+  m_sharedMaterial: {fileID: -2662736515100510546, guid: f36d078a4b4bb2e4988488f32aeb23d5, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1289915659
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289915657}
+  m_CullTransparentMesh: 1
+--- !u!224 &1289915660
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289915657}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000041723}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1089247236}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.102164485, y: 0.12177685}
+  m_AnchorMax: {x: 0.8982511, y: 0.77832377}
+  m_AnchoredPosition: {x: 0.30688477, y: -4.8966956}
+  m_SizeDelta: {x: -2.0309525, y: -6.2893624}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1293621653
 GameObject:
   m_ObjectHideFlags: 0
@@ -13597,14 +13765,13 @@ GameObject:
   - component: {fileID: 1604794546}
   - component: {fileID: 1604794548}
   - component: {fileID: 1604794547}
-  - component: {fileID: 1604794549}
   m_Layer: 5
   m_Name: CreditMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1604794546
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13670,18 +13837,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604794545}
   m_CullTransparentMesh: 1
---- !u!114 &1604794549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604794545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22553916f9752c14c9c56e50db2de0a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1608943683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020542995510040285, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
@@ -14905,7 +15060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1731771733
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17805,12 +17960,12 @@ GameObject:
   - component: {fileID: 2066492876}
   - component: {fileID: 2066492875}
   m_Layer: 5
-  m_Name: CrediPlanButton_2
+  m_Name: CreditPlanButton_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2066492874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17875,7 +18030,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2066492876}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 292172378}
+        m_TargetAssemblyTypeName: MonopolyGameManager, Assembly-CSharp
+        m_MethodName: TakeCredit_2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2066492876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18570,6 +18737,7 @@ MonoBehaviour:
   ownedProperties: []
   offsetPosition: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  activeCredit: {fileID: 0}
 --- !u!4 &2145549415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6946710229209796278, guid: d888636fa98fab64787e97bb1bba2e18, type: 3}
@@ -19218,3 +19386,15 @@ MonoBehaviour:
   movementThreshold: 0.01
   minMoveTime: 0.2
   currentPlayerIndex: 0
+--- !u!114 &3387655499110384951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292172376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553916f9752c14c9c56e50db2de0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

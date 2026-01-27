@@ -6,6 +6,7 @@ using static MonopolyGameManager;
 using System.Linq;
 using Cinemachine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MonopolyGameManager : MonoBehaviour
 {
@@ -35,8 +36,18 @@ public class MonopolyGameManager : MonoBehaviour
     private PlayerMover _playerMover;
     private CameraSwitch _cameraSwitch;
     [SerializeField] private MainInterface _mainInterface;
+
+    [Header("Credit")]
     [SerializeField] private Credit _credit;
-    [SerializeField] private List<TMP_Text> _creditPlansText;
+    [SerializeField] private Credit _creditPlan_1;
+    [SerializeField] private Credit _creditPlan_2;
+    [SerializeField] private Credit _creditPlan_3;     
+    [SerializeField] private TMP_Text _creditPlansText_1;
+    [SerializeField] private TMP_Text _creditPlansText_2;
+    [SerializeField] private TMP_Text _creditPlansText_3;
+    [SerializeField] private Button _creditPlansButton_1;
+    [SerializeField] private Button _creditPlansButton_2;
+    [SerializeField] private Button _creditPlansButton_3;
     [SerializeField] private TMP_Text _creditInfoText;
 
     private void Awake()
@@ -99,6 +110,15 @@ public class MonopolyGameManager : MonoBehaviour
         //     _mainInterface = MainInterface.Instance;
         // }
 
+        _creditPlansButton_1.gameObject.SetActive(false);
+        _creditPlansButton_2.gameObject.SetActive(false);
+        _creditPlansButton_3.gameObject.SetActive(false);
+
+        _creditPlansText_1.gameObject.SetActive(false);
+        _creditPlansText_2.gameObject.SetActive(false);
+        _creditPlansText_3.gameObject.SetActive(false);
+
+        _creditInfoText.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -113,24 +133,44 @@ public class MonopolyGameManager : MonoBehaviour
 
             if (_cameraSwitch._currentCamera == _cameraSwitch._mainViewCam)
             {
-                Player player = players[_playerMover.currentPlayerIndex];
+                Player player = players[_playerMover.currentPlayerIndex];                
 
                 if (!player.isHaveCredit)
-            {
-                for (int i = 0; i < 3; i++)                
                 {
-                    _credit.NewCredit();
-                    _creditPlansText[i].text += _credit.GetCreditInfo();
-                }                        
-            }  
+                    _creditPlansButton_1.gameObject.SetActive(true);
+                    _creditPlansButton_2.gameObject.SetActive(true);
+                    _creditPlansButton_3.gameObject.SetActive(true);
+
+                    _creditPlansText_1.gameObject.SetActive(true);
+                    _creditPlansText_2.gameObject.SetActive(true);
+                    _creditPlansText_3.gameObject.SetActive(true);
+
+                    _creditPlan_1.NewCredit();
+                    _creditPlan_2.NewCredit();
+                    _creditPlan_3.NewCredit();
+
+                    _creditPlansText_1.text = _creditPlan_1.GetCreditInfo_ToString();                       
+                    _creditPlansText_2.text = _creditPlan_2.GetCreditInfo_ToString();
+                    _creditPlansText_3.text = _creditPlan_3.GetCreditInfo_ToString();
+                }  
             
-            else
-            {
-                _creditInfoText.text = $"У игрока {player.playerName} уже есть активный кредит!";                
-            }
+                else
+                {
+                    _creditPlansButton_1.gameObject.SetActive(false);
+                    _creditPlansButton_2.gameObject.SetActive(false);
+                    _creditPlansButton_3.gameObject.SetActive(false);
+
+                    _creditPlansText_1.gameObject.SetActive(false);
+                    _creditPlansText_2.gameObject.SetActive(false);
+                    _creditPlansText_3.gameObject.SetActive(false);
+
+                    _creditInfoText.gameObject.SetActive(true);
+
+                    _creditInfoText.text = $"У игрока {player.playerName} есть активный кредит: \n{player.activeCredit.GetCreditInfo_ToString()}";              
+                }
 
                 _playerMover.Move();
-                
+                    
 
                 OnPlayerMoved?.Invoke(player);                
             }
@@ -181,13 +221,79 @@ public class MonopolyGameManager : MonoBehaviour
                     _cameraSwitch.ClosePanelMenu();
                 }
             }
-        }
+        }   
+    }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
+    public void TakeCredit_1()
+    {
+        Player player = GetCurrentPlayer();
+        
+        // Добавляем кредит игроку
+        player.activeCredit = _creditPlan_1;
+        
+        // Начисляем деньги игроку
+        player.AddMoney(_creditPlan_1.GetSum());
+        player.isHaveCredit = true;
+        
+        _creditPlansButton_1.gameObject.SetActive(false);
+        _creditPlansButton_2.gameObject.SetActive(false);
+        _creditPlansButton_3.gameObject.SetActive(false);
 
-            
-        }
+        _creditPlansText_1.gameObject.SetActive(false);
+        _creditPlansText_2.gameObject.SetActive(false);
+        _creditPlansText_3.gameObject.SetActive(false);
+
+        _creditInfoText.gameObject.SetActive(true);
+
+        _creditInfoText.text = $"Игрок {player.playerName} взял кредит: \n\n{player.activeCredit.GetCreditInfo_ToString()}";
+    }
+
+    public void TakeCredit_2()
+    {
+        Player player = GetCurrentPlayer();
+        
+        // Добавляем кредит игроку
+        player.activeCredit = _creditPlan_2;
+        
+        // Начисляем деньги игроку
+        player.AddMoney(_creditPlan_2.GetSum());
+        player.isHaveCredit = true;
+        
+        _creditPlansButton_1.gameObject.SetActive(false);
+        _creditPlansButton_2.gameObject.SetActive(false);
+        _creditPlansButton_3.gameObject.SetActive(false);
+
+        _creditPlansText_1.gameObject.SetActive(false);
+        _creditPlansText_2.gameObject.SetActive(false);
+        _creditPlansText_3.gameObject.SetActive(false);
+
+        _creditInfoText.gameObject.SetActive(true);
+
+        _creditInfoText.text = $"Игрок {player.playerName} взял кредит: \n\n{player.activeCredit.GetCreditInfo_ToString()}";
+    }
+
+    public void TakeCredit_3()
+    {
+        Player player = GetCurrentPlayer();
+        
+        // Добавляем кредит игроку
+        player.activeCredit = _creditPlan_3;
+        
+        // Начисляем деньги игроку
+        player.AddMoney(_creditPlan_3.GetSum());
+        player.isHaveCredit = true;
+        
+        _creditPlansButton_1.gameObject.SetActive(false);
+        _creditPlansButton_2.gameObject.SetActive(false);
+        _creditPlansButton_3.gameObject.SetActive(false);
+
+        _creditPlansText_1.gameObject.SetActive(false);
+        _creditPlansText_2.gameObject.SetActive(false);
+        _creditPlansText_3.gameObject.SetActive(false);
+
+        _creditInfoText.gameObject.SetActive(true);
+
+        _creditInfoText.text = $"Игрок {player.playerName} взял кредит: \n\n{player.activeCredit.GetCreditInfo_ToString()}";
     }
 
     public void LogEvent(string message)
