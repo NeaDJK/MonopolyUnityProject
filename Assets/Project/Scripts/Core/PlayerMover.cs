@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     public static PlayerMover Instance { get; private set; }
-    
 
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
@@ -15,7 +14,7 @@ public class PlayerMover : MonoBehaviour
     public float movementThreshold = 0.01f;
     public float minMoveTime = 0.2f;
 
-    public int currentPlayerIndex = 0;    
+    public int currentPlayerIndex = 0;
     public static event Action OnDiceRolled;
 
     private int stepsRemaining = 0;
@@ -24,13 +23,12 @@ public class PlayerMover : MonoBehaviour
     private MonopolyGameManager _gameManager;
     private PlayerStatusUI _playerStatusUI;
     private CameraSwitch _cameraSwitch;
-    
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            // ������������� ������������
             _gameManager = MonopolyGameManager.Instance;
             _cameraSwitch = CameraSwitch.Instance;
             _playerStatusUI = FindObjectOfType<PlayerStatusUI>();
@@ -43,7 +41,6 @@ public class PlayerMover : MonoBehaviour
 
     private void Start()
     {
-        // �������������� ��������
         if (_gameManager == null)
         {
             _gameManager = MonopolyGameManager.Instance;
@@ -56,7 +53,7 @@ public class PlayerMover : MonoBehaviour
     }
 
     public void Move() => StartCoroutine(TryRollDice(currentPlayerIndex));
-    
+
     public IEnumerator TryRollDice(int playerIndex)
     {
         Player player = _gameManager.players[playerIndex];
@@ -65,7 +62,6 @@ public class PlayerMover : MonoBehaviour
         {
             _gameManager.GetCurrentPlayer().HandleJailedPlayer();
             EndTurn();
-
             yield break;
         }
 
@@ -96,8 +92,6 @@ public class PlayerMover : MonoBehaviour
 
         _gameManager.players[currentPlayerIndex].movementCoroutine = StartCoroutine(MovePlayerCoroutine(currentPlayerIndex));
 
-        //EventManager.UpdateGameEvent(diceResult);
-
         OnDiceRolled?.Invoke();
         yield break;
     }
@@ -114,9 +108,8 @@ public class PlayerMover : MonoBehaviour
             MainInterface.Instance.UpdateBalance(_gameManager.players[currentPlayerIndex].money);
             MainInterface.Instance.UpdatePlayerName(_gameManager.players[currentPlayerIndex].playerName);
         }
-        
         else
-        {            
+        {
             _gameManager.LogEvent($"Еще ходов: {_gameManager.players[currentPlayerIndex].countOfSteps}");
         }
     }
@@ -141,7 +134,6 @@ public class PlayerMover : MonoBehaviour
         player.piece.transform.position = exactPos;
     }
 
-
     private bool AnyPlayerMoving()
     {
         foreach (Player player in _gameManager.players)
@@ -162,19 +154,37 @@ public class PlayerMover : MonoBehaviour
             targetPos.y += _gameManager.playerBaseHeight;
             targetPos += new Vector3(player.offsetPosition.x, 0, player.offsetPosition.z);
 
+            // Сохраняем предыдущую позицию перед обновлением
             int previousPosition = player.currentPosition;
-            player.currentPosition = (player.currentPosition + 1) % _gameManager.cells.Length;
+            
+            // Обновляем позицию
+            player.currentPosition = nextPos;
 
-            if (previousPosition > player.currentPosition)
+            // Проверяем, прошел ли игрок круг (прошел через стартовую клетку)
+            bool passedStart = nextPos < previousPosition;
+
+            if (passedStart)
             {
+                // ВАЖНО: Сначала начисляем деньги за проход круга
                 player.AddMoney(StartCell.startMoney);
-
                 _playerStatusUI.UpdateStatus();
                 _gameManager.LogEvent($"{player.playerName} получает $200 за проход круга!");
 
-                if (player.isHaveCredit)
+                // Затем списываем кредит, если он есть
+                if (player.isHaveCredit && player.activeCredit != null)
                 {
-                    player.PayCredit();
+                    // Проверяем, не выплачен ли уже кредит
+                    if (player.activeCredit.GetCurrentCircle() < player.activeCredit.GetCountOfSteps())
+                    {
+                        player.PayCredit();
+                    }
+                    else
+                    {
+                        // Кредит уже выплачен
+                        player.activeCredit = null;
+                        player.isHaveCredit = false;
+                        _gameManager.LogEvent($"{player.playerName} полностью выплатил кредит!");
+                    }
                 }
             }
 
@@ -187,7 +197,6 @@ public class PlayerMover : MonoBehaviour
             float moveStartTime = Time.time;
             yield return StartCoroutine(AnimateMoveToPosition(player, targetPos));
 
-            player.currentPosition = nextPos;
             stepsRemaining--;
 
             if (Time.time - moveStartTime < minMoveTime)
@@ -199,7 +208,7 @@ public class PlayerMover : MonoBehaviour
         player.movementCoroutine = null;
 
         _cameraSwitch.SwitchToPlayerCamera(playerIndex);
-        _gameManager.ProcessCell(player.currentPosition, player);          
+        _gameManager.ProcessCell(player.currentPosition, player);
     }
 
     private IEnumerator AnimateMoveToPosition(Player player, Vector3 targetPos)
@@ -236,5 +245,5 @@ public class PlayerMover : MonoBehaviour
 
             yield return null;
         }
-    }    
+    }
 }

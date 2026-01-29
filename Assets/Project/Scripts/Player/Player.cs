@@ -57,18 +57,45 @@ public class Player : MonoBehaviour
         {
             MonopolyGameManager.Instance.LogEvent($"Осталось ходов в тюрьме: {turnsInJail}");
         }
-    }    
+    }
 
     public void PayCredit()
     {
-        // Выплата за текущий круг
-        int payment = activeCredit.GetCurrentPaymentForCircle();
+        if (activeCredit == null || !isHaveCredit) 
+        {
+            // Если кредита нет, сбрасываем флаг
+            isHaveCredit = false;
+            return;
+        }
+
+        // Получаем платеж для следующего круга
+        int payment = activeCredit.GetNextPayment();
+        
+        // Если платеж 0 или отрицательный, кредит выплачен
+        if (payment <= 0)
+        {
+            activeCredit = null;
+            isHaveCredit = false;
+            MonopolyGameManager.Instance.LogEvent($"{playerName} полностью выплатил кредит!");
+            return;
+        }
+
+        // СПИСЫВАЕМ деньги (ВАЖНО: не начисляем!)
         PayMoney(payment);
         
-        // Увеличиваем текущий круг
+        // Увеличиваем счетчик выплаченных кругов
         activeCredit.AddCurrentCircle(1);
         
-        // Проверяем, не закрыт ли кредит
-        activeCredit.EndCredit();
+        // Логируем
+        MonopolyGameManager.Instance.LogEvent($"{playerName} выплатил {payment} по кредиту. " +
+            $"Осталось кругов: {activeCredit.GetCountOfSteps() - activeCredit.GetCurrentCircle()}");
+
+        // Проверяем, не выплачен ли кредит полностью
+        if (activeCredit.GetCurrentCircle() >= activeCredit.GetCountOfSteps())
+        {
+            activeCredit = null;
+            isHaveCredit = false;
+            MonopolyGameManager.Instance.LogEvent($"{playerName} полностью выплатил кредит!");
+        }
     }
 }
