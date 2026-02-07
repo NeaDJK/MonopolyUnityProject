@@ -11,5 +11,7 @@ public class TaxCell : MonopolyCell
         player.PayMoney(taxMoney);
         MonopolyGameManager.Instance.LogEvent($"{player.playerName} платит налог в размере ${taxMoney}!");
         MainInterface.Instance.UpdateBalance(player.money);
+        MonopolyGameManager.Instance.LogEvent($"Новый баланс: ${player.money}");
+        MonopolyGameManager.Instance.TryToLose(player);
     }
 }

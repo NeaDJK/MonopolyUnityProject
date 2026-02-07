@@ -33,7 +33,14 @@ public class MonopolyGameManager : MonoBehaviour
     private TransportCell currentTransport;
     private PlayerMover _playerMover;
     private CameraSwitch _cameraSwitch;
+
+    [Header("Inteface")]
     [SerializeField] private MainInterface _mainInterface;
+    [SerializeField] private GameObject _playerNameUI;
+    [SerializeField] private Image _playerAvatar;
+    [SerializeField] private GameObject _playerBalanceUI;
+    [SerializeField] private GameObject _controlGuide;
+    [SerializeField] private PlayerStatusUI _playerStatusUI;
 
     [Header("Credit")]
     [SerializeField] private Credit _credit;
@@ -76,33 +83,38 @@ public class MonopolyGameManager : MonoBehaviour
             _mainInterface = MainInterface.Instance;
         }
 
+        _playerAvatar.sprite = players[_playerMover.currentPlayerIndex].avatar;
+        _playerStatusUI.UpdateStatus();
+
         _creditPlanButton.gameObject.SetActive(false);
         _creditPlanText.gameObject.SetActive(false);
-        _creditInfoText.gameObject.SetActive(false);
+        _creditInfoText.text = "Здесь можно взять кредит.";
     }
 
     private void Update()
-    {
+    { 
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_cameraSwitch._currentCamera == _cameraSwitch._mainViewCam)
             {
-                Player player = players[_playerMover.currentPlayerIndex];                
+                Player player = players[_playerMover.currentPlayerIndex]; 
                 
+                // Всегда показываем план кредита, если у игрока нет кредита
                 if (!player.isHaveCredit)
                 {
                     _creditPlanButton.gameObject.SetActive(true);
                     _creditPlanText.gameObject.SetActive(true);
+                    _creditInfoText.text = "";
                     
-                    // Создаем новый план кредита (только для показа, не реальный кредит)
                     _creditPlan.NewCredit();
                     _creditPlanText.text = _creditPlan.GetCreditInfo_ToString();   
                 }  
                 else
                 {
+                    // Если есть кредит, показываем информацию о нем
                     _creditPlanButton.gameObject.SetActive(false);
                     _creditPlanText.gameObject.SetActive(false);
-                    _creditInfoText.gameObject.SetActive(true);
                     
                     if (player.activeCredit != null)
                     {
@@ -110,9 +122,7 @@ public class MonopolyGameManager : MonoBehaviour
                     }
                 }
 
-                // Просто перемещаем, проверка круга теперь в PlayerMover
                 _playerMover.Move();
-                    
                 OnPlayerMoved?.Invoke(player);                
             }
         }
@@ -130,6 +140,23 @@ public class MonopolyGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S) && _cameraSwitch._currentCamera != _cameraSwitch._panelMenuCam)
         {
             _playerMover.EndTurn();
+            Player player = players[_playerMover.currentPlayerIndex];
+            _playerAvatar.sprite = players[_playerMover.currentPlayerIndex].avatar; 
+            _playerStatusUI.UpdateStatus();
+            _creditInfoText.gameObject.SetActive(true);
+
+            if (player.isHaveCredit)
+            {
+                _creditPlanButton.gameObject.SetActive(false);
+                _creditPlanText.gameObject.SetActive(false);
+
+                _creditInfoText.text = CreditUnfoUpdate();
+            }
+
+            else
+            {
+                _creditInfoText.text = "Здесь можно взять кредит.";
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -137,6 +164,11 @@ public class MonopolyGameManager : MonoBehaviour
             if (_cameraSwitch != null)
             {
                 _cameraSwitch.OpenPanelMenu();
+
+                _playerNameUI.SetActive(false);
+                _playerBalanceUI.SetActive(false);
+
+                _creditPlanButton.interactable = true;
             }
             else
             {
@@ -148,16 +180,47 @@ public class MonopolyGameManager : MonoBehaviour
         {
             if (_cameraSwitch != null)
             {
+                _playerNameUI.SetActive(true);
+                _playerBalanceUI.SetActive(true);
+                _creditPlanButton.interactable = false;
+
                 if (_cameraSwitch._isPreviousPlayerCamera)
                 {
                     _cameraSwitch.ClosePanelMenu(_playerMover.currentPlayerIndex);
                 }
                 else if (_cameraSwitch._isPreviousMainViewCamera)
                 {
-                    _cameraSwitch.ClosePanelMenu();
+                    _cameraSwitch.ClosePanelMenu();    
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            _controlGuide.SetActive(!_controlGuide.activeSelf);
         }   
+    }
+
+    public string CreditUnfoUpdate()
+    {
+        Player player = GetCurrentPlayer();
+        return $"У игрока {player.playerName} активный кредит: \n\n{player.activeCredit.GetCreditInfo_ToString()}";
+    }
+
+    public void TryToWin(Player player)
+    {
+        if (player.money >= 15000)
+        {
+            LogEvent($"Игрок {player.playerName} победил!");
+        }
+    }
+
+    public void TryToLose(Player player)
+    {
+        if (player.money < 0)
+        {
+            LogEvent($"Игрок {player.playerName} проиграл!");
+        }
     }
 
     public void TakeCredit()
@@ -170,23 +233,27 @@ public class MonopolyGameManager : MonoBehaviour
             return;
         }
         
-        // Создаем НОВЫЙ объект кредита для игрока
-        Credit newCredit = new Credit();
+        // ВАЖНО: Создаем новый GameObject с компонентом Credit
+        GameObject creditGO = new GameObject($"Credit_{player.playerName}");
+        
+        // Добавляем компонент Credit к GameObject
+        Credit newCredit = creditGO.AddComponent<Credit>();
         
         // Копируем параметры из плана кредита
+        // В Credit.cs поля должны быть public или иметь [SerializeField]
         newCredit._sum = _creditPlan._sum;
         newCredit._countOfSteps = _creditPlan._countOfSteps;
         newCredit._percent = _creditPlan._percent;
         newCredit._coefPercent = _creditPlan._coefPercent;
         newCredit._typeOfCredit = _creditPlan._typeOfCredit;
         newCredit._currentCircle = 0; // Начинаем с 0 выплаченных кругов
-        newCredit.CalculateCurrentPayment(); // Рассчитываем первый платеж
+        newCredit.CalculateCurrentPayment(1); // Рассчитываем первый платеж
         
         // Присваиваем игроку
         player.activeCredit = newCredit;
         player.isHaveCredit = true;
         
-        // ВАЖНО: Начисляем деньги ОДИН РАЗ при взятии кредита
+        // Начисляем деньги ОДИН РАЗ при взятии кредита
         player.AddMoney(newCredit.GetSum());
         
         // Обновляем UI
@@ -196,6 +263,10 @@ public class MonopolyGameManager : MonoBehaviour
         _creditInfoText.text = $"Игрок {player.playerName} взял кредит: \n\n{player.activeCredit.GetCreditInfo_ToString()}";
         
         LogEvent($"{player.playerName} взял кредит на сумму {newCredit.GetSum()}");
+        _playerStatusUI.UpdateStatus();
+        _mainInterface.UpdateBalance(player.money);
+        
+        Debug.Log($"Кредит создан: activeCredit != null: {player.activeCredit != null}, isHaveCredit: {player.isHaveCredit}");
     }
 
     public void LogEvent(string message)
@@ -219,11 +290,12 @@ public class MonopolyGameManager : MonoBehaviour
             transport.OnPlayerLand(player);
         }
 
-        if (cells[cellIndex].TryGetComponent(out PropertyCell property))
+        else if (cells[cellIndex].TryGetComponent(out PropertyCell property))
         {
             currentProperty = property;
             property.OnPlayerLand(player);
         }
+
         else
         {
             cells[cellIndex].GetComponent<MonopolyCell>().OnPlayerLand(player);
@@ -299,5 +371,14 @@ public class MonopolyGameManager : MonoBehaviour
             return pos;
         }
         return Vector3.zero;
+    }
+
+    public void DebugPlayerCredit(Player player)
+    {
+        Debug.Log($"Игрок {player.playerName}: isHaveCredit={player.isHaveCredit}, activeCredit={player.activeCredit != null}");
+        if (player.activeCredit != null)
+        {
+            Debug.Log($"Кредит: сумма={player.activeCredit._sum}, кругов={player.activeCredit._countOfSteps}");
+        }
     }
 }

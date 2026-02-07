@@ -10,8 +10,15 @@ public class SpecialCell : MonopolyCell
     private List<string> chanceEvents = new List<string>
     {
         "Оплатите ремонт домов - $150",
-        "Получите наследство $100",
-        "Штраф за превышение скорости $15"
+        "Пришёл подарок от друзей. Получите $75",
+        "Штраф за превышение скорости. Оплатите $15",
+        "Получили завещание дальнего родственника. Получите $100",
+        "Вас обокрали на сумму $50",
+        "Второе место в конкурсе красоты. Получите $50",
+        "Вашему автомобилю нужен ремонт. Оплатите $115",
+        "Штраф за парковку. Оплатите $35",
+        "Получите дивиденды по акциям в размере $50",
+        "Первое место в конкурсе знаний. Получите $75"
     };
 
     private List<string> communityChestEvents = new List<string>
@@ -20,7 +27,12 @@ public class SpecialCell : MonopolyCell
         "Оплатите обучение $50",
         "Получите доход от инвестиций $100",
         "Выиграли в лотерею! Получите $50",
-        "Оплатите больничные счета $100"
+        "Оплатите больничные счета $100",
+        "Возврат подоходного налога. Получите $75",
+        "Получите проценты по вкладу в размере $25",
+        "Оплатите взнос в клуб $75",
+        "Потребовались услуги адвоката. Оплатите $150",
+        "Обвал акций. Вы потеряли $200"
     };
 
     public override void OnPlayerLand(Player player)
@@ -47,8 +59,10 @@ public class SpecialCell : MonopolyCell
                 player.AddMoney(amount);
                 MainInterface.Instance.UpdateBalance(player.money);
             }
+
+            MonopolyGameManager.Instance.TryToWin(player);
         }
-        else if (eventText.Contains("Оплатите"))
+        else if (eventText.Contains("Оплатите") || eventText.Contains("обокрали") || eventText.Contains("потеряли"))
         {
             int amount = ExtractAmount(eventText);
             if (amount > 0) 
@@ -56,7 +70,11 @@ public class SpecialCell : MonopolyCell
                 player.PayMoney(amount);
                 MainInterface.Instance.UpdateBalance(player.money);
             }
+
+            MonopolyGameManager.Instance.TryToLose(player);
         }
+
+        MonopolyGameManager.Instance.LogEvent($"Новый баланс: ${player.money}");
     }
 
     private int ExtractAmount(string text)

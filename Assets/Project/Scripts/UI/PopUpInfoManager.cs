@@ -8,7 +8,7 @@ public class PopUpInfoManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text _popUpInfoText;
     [SerializeField] private GameObject _popUpInfoField;
-    [Range(1, 10), SerializeField] private float messageInterval;      // Интервал между сообщениями
+    [Range(0, 10), SerializeField] private float messageInterval;      // Интервал между сообщениями
     [Range(1, 10), SerializeField] private float displayDuration;    // Время отображения одного сообщения
 
     private Queue<string> messageQueue = new Queue<string>(); // Очередь сообщений

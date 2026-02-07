@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     public int playerNumber;
     public Color playerColor;
     public string playerName;
+    public Sprite avatar;
     public int money = 1500;
     public bool isInJail;
     public bool isHaveCredit;
@@ -63,7 +65,6 @@ public class Player : MonoBehaviour
     {
         if (activeCredit == null || !isHaveCredit) 
         {
-            // Если кредита нет, сбрасываем флаг
             isHaveCredit = false;
             return;
         }
@@ -71,28 +72,33 @@ public class Player : MonoBehaviour
         // Получаем платеж для следующего круга
         int payment = activeCredit.GetNextPayment();
         
-        // Если платеж 0 или отрицательный, кредит выплачен
         if (payment <= 0)
         {
+            // Кредит выплачен - уничтожаем GameObject
+            if (activeCredit.gameObject != null)
+                Destroy(activeCredit.gameObject);
+            
             activeCredit = null;
             isHaveCredit = false;
             MonopolyGameManager.Instance.LogEvent($"{playerName} полностью выплатил кредит!");
             return;
         }
 
-        // СПИСЫВАЕМ деньги (ВАЖНО: не начисляем!)
+        // СПИСЫВАЕМ деньги
         PayMoney(payment);
         
         // Увеличиваем счетчик выплаченных кругов
         activeCredit.AddCurrentCircle(1);
         
-        // Логируем
-        MonopolyGameManager.Instance.LogEvent($"{playerName} выплатил {payment} по кредиту. " +
-            $"Осталось кругов: {activeCredit.GetCountOfSteps() - activeCredit.GetCurrentCircle()}");
+        MonopolyGameManager.Instance.LogEvent($"{playerName} выплатил {payment} по кредиту. Осталось кругов: {activeCredit.GetCountOfSteps() - activeCredit.GetCurrentCircle()}");
 
         // Проверяем, не выплачен ли кредит полностью
         if (activeCredit.GetCurrentCircle() >= activeCredit.GetCountOfSteps())
         {
+            // Уничтожаем GameObject кредита
+            if (activeCredit.gameObject != null)
+                Destroy(activeCredit.gameObject);
+            
             activeCredit = null;
             isHaveCredit = false;
             MonopolyGameManager.Instance.LogEvent($"{playerName} полностью выплатил кредит!");

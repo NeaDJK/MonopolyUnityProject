@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "MonopolyUnityProject.sln"
+    "dotnet.defaultSolution": "Monopoly.sln"
 }

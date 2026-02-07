@@ -6,8 +6,9 @@ using UnityEngine;
 public class PropertyCell : MonopolyCell
 {
     public int purchasePrice;
-    public int[] rentPrices;
+    [SerializeField] private int rentPrice;
     public int cellIndex;
+
 
     [HideInInspector] public Player owner;
     [HideInInspector] public int housesBuilt;
@@ -48,11 +49,12 @@ public class PropertyCell : MonopolyCell
 
     private void HandleRentPayment(Player player)
     {
-        int rent = CalculateRent();
-        MonopolyGameManager.Instance.LogEvent($"{player.playerName} платит аренду {owner.playerName}: ${rent}");
-        player.PayMoney(rent);
-        owner.AddMoney(rent);
+        MonopolyGameManager.Instance.LogEvent($"{player.playerName} платит аренду {owner.playerName}: ${rentPrice}");
+        player.PayMoney(rentPrice);
+        owner.AddMoney(rentPrice);
         MainInterface.Instance.UpdateBalance(player.money);
+        MonopolyGameManager.Instance.TryToLose(player);
+        MonopolyGameManager.Instance.TryToWin(owner);
     }
 
     // private void ShowPurchaseInfo(Player player)
@@ -87,18 +89,9 @@ public class PropertyCell : MonopolyCell
 
         //InventoryManager.Instance.AddNewCard(cellIndex);
         
-        MonopolyGameManager.Instance.LogEvent($"[ПОКУПКА] {buyer.playerName} стал владельцем {cellName}");
+        MonopolyGameManager.Instance.LogEvent($"{buyer.playerName} стал владельцем {cellName}");
         MonopolyGameManager.Instance.LogEvent($"Новый баланс: ${buyer.money}");
+        PlayerStatusUI.Instanse.UpdateStatus();
         MainInterface.Instance.UpdateBalance(buyer.money);
-    }
-
-    private int CalculateRent()
-    {
-        if (rentPrices == null || rentPrices.Length == 0)
-        {
-            Debug.LogError("Не настроены арендные ставки!");
-            return 0;
-        }
-        return rentPrices[Mathf.Clamp(housesBuilt, 0, rentPrices.Length - 1)];
     }
 }
