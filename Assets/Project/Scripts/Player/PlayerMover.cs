@@ -22,7 +22,7 @@ public class PlayerMover : MonoBehaviour
 
     private MonopolyGameManager _gameManager;
     private PlayerStatusUI _playerStatusUI;
-    private CameraSwitch _cameraSwitch;
+    [SerializeField] private CameraSwitch _cameraSwitch;
     private MainInterface _mainInterface;
 
     private void Awake()
@@ -51,6 +51,11 @@ public class PlayerMover : MonoBehaviour
         {
             _playerStatusUI = FindObjectOfType<PlayerStatusUI>();
         }
+
+        if (_cameraSwitch == null)
+        {
+            _cameraSwitch = CameraSwitch.Instance;
+        }
     }
 
     public void Move() => StartCoroutine(TryRollDice(currentPlayerIndex));
@@ -61,7 +66,7 @@ public class PlayerMover : MonoBehaviour
 
         if (player.isInJail)
         {
-            player.countOfSteps-- ;
+            player.countOfSteps--;
             _gameManager.GetCurrentPlayer().HandleJailedPlayer();
             yield break;
         }
@@ -85,9 +90,9 @@ public class PlayerMover : MonoBehaviour
 
         else
         {
-            _gameManager.LogEvent($"Игроку {_gameManager.players[currentPlayerIndex].playerName} выпало {dice1}+{dice2}={diceResult}");            
+            _gameManager.LogEvent($"Игроку {_gameManager.players[currentPlayerIndex].playerName} выпало {dice1}+{dice2}={diceResult}");
         }
-        
+
 
         yield return new WaitForSeconds(1);
 
@@ -163,7 +168,7 @@ public class PlayerMover : MonoBehaviour
 
             // Сохраняем предыдущую позицию
             int oldPos = player.currentPosition;
-            
+
             // Обновляем позицию
             player.currentPosition = nextPos;
 

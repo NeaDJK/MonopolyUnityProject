@@ -31,7 +31,7 @@ public class MonopolyGameManager : MonoBehaviour
 
     private PropertyCell currentProperty = new PropertyCell();
     private TransportCell currentTransport;
-    private PlayerMover _playerMover;
+    [SerializeField] private PlayerMover _playerMover;
     private CameraSwitch _cameraSwitch;
 
     [Header("Inteface")]

@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     public const int defaultCountOfStep = 1;
     public int countOfSteps = defaultCountOfStep;
     public CinemachineVirtualCamera playerCam;
-
     public List<TransportCell> ownedTransports = new List<TransportCell>();
     public List<PropertyCell> ownedProperties = new List<PropertyCell>();
 

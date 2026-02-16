@@ -2774,14 +2774,15 @@ MonoBehaviour:
   - {fileID: 874824949}
   playerBaseHeight: 0.4
   isGameInitialized: 0
+  _playerMover: {fileID: 3387655499110384952}
   _mainInterface: {fileID: 1403880029}
   _playerNameUI: {fileID: 336633352}
   _playerAvatar: {fileID: 1245428116}
   _playerBalanceUI: {fileID: 1220613761}
   _controlGuide: {fileID: 422111059}
   _playerStatusUI: {fileID: 559188625}
-  _credit: {fileID: 3387655499110384951}
-  _creditPlan: {fileID: 3387655499110384951}
+  _credit: {fileID: 3387655499110384953}
+  _creditPlan: {fileID: 3387655499110384953}
   _creditPlanText: {fileID: 1731771735}
   _creditPlanButton: {fileID: 2066492875}
   _creditInfoText: {fileID: 1289915658}
@@ -20895,7 +20896,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2531955676923417955, guid: 92e56b0de4cbbc0429c0404f56ab632d, type: 3}
   m_PrefabInstance: {fileID: 3387655499110384941}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3387655499110384950
+--- !u!114 &3387655499110384952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20904,7 +20905,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 292172376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6905f08e0a05624cbd09323895f7f07, type: 3}
+  m_Script: {fileID: 11500000, guid: c4351a0122f0af345aeeaf55fbd775e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
@@ -20914,7 +20915,8 @@ MonoBehaviour:
   movementThreshold: 0.01
   minMoveTime: 0.2
   currentPlayerIndex: 0
---- !u!114 &3387655499110384951
+  _cameraSwitch: {fileID: 259216653}
+--- !u!114 &3387655499110384953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20923,7 +20925,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 292172376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22553916f9752c14c9c56e50db2de0a6, type: 3}
+  m_Script: {fileID: 11500000, guid: c2772b07357a5d44785e39db5c1b0b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sum: 0
