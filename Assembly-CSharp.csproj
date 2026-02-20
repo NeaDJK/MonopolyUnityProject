@@ -62,6 +62,7 @@
     <Compile Include="Assets\Project\Scripts\Cells\SpecialCell.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\StartCell.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\MonopolyCell.cs" />
+    <Compile Include="Assets\Project\Scripts\Player\PlayerMover.cs" />
     <Compile Include="Assets\Project\Scripts\Core\CameraSwitch.cs" />
     <Compile Include="Assets\Project\Scripts\UI\PopUpInfoManager.cs" />
     <Compile Include="Assets\Project\Scripts\UI\EventLoggerUI.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="Assets\Project\Scripts\Cells\JailCell.cs" />
     <Compile Include="Assets\Project\Scripts\Core\EventManager.cs" />
     <Compile Include="Assets\Project\Scripts\Cells\TransportCell.cs" />
-    <Compile Include="Assets\Project\Scripts\Player\PlayerMover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
